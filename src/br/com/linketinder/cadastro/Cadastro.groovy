@@ -20,4 +20,9 @@ class Cadastro {
 
         candidatos.each {candidato -> println("Nome: ${candidato.nome}, Email: ${candidato.email}, CPF: ${candidato.cpf}, Idade: ${candidato.idade}, Estado: ${candidato.estado}, CEP: ${candidato.cep}, Descrição Pessoal: ${candidato.descricaoPessoal}, Competências: ${candidato.competencias}, ")}
     }
+
+    void listarEmpresas(){
+
+        empresas.each {empresa -> println("Empresa: ${empresa.nome}, Email Corporativo: ${empresa.email}, CNPJ: ${empresa.cnpj}, Pais: ${empresa.pais}, Estado: ${empresa.estado}, CEP: ${empresa.cep}, Descrição da Empresa: ${empresa.descricaoEmpresa}, Competências: ${empresa.competencias}, ")}
+    }
 }
