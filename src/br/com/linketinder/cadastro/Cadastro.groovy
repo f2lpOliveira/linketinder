@@ -57,7 +57,59 @@ class Cadastro {
                     ["Swift", "iOS Development", "Firebase"]
             )
     ]
-    List<Empresa> empresas= []
+
+    List<Empresa> empresas= [
+            new Empresa(
+                    "ABC Tech",
+                    "contato@abc.com",
+                    "123.456.789/0001-01",
+                    "Brasil",
+                    "SP",
+                    "12345-678",
+                    "Empresa de tecnologia inovadora",
+                    ["Java", "JavaScript", "AWS"]
+            ),
+            new Empresa(
+                    "XYZ Solutions",
+                    "contato@xyz.com",
+                    "987.654.321/0001-02",
+                    "EUA",
+                    "CA",
+                    "98765-432",
+                    "Consultoria em soluções empresariais",
+                    ["Python", "Django", "Machine Learning"]
+            ),
+            new Empresa(
+                    "Global Soft",
+                    "contato@globalsoft.com",
+                    "456.789.123/0001-03",
+                    "Índia",
+                    "MH",
+                    "56789-012",
+                    "Desenvolvimento de software personalizado",
+                    ["C#", "ASP.NET", "SQL Server"]
+            ),
+            new Empresa(
+                    "Tech Innovators",
+                    "contato@techinnovators.com",
+                    "789.123.456/0001-04",
+                    "Alemanha",
+                    "BW",
+                    "34567-890",
+                    "Startup focada em inovações tecnológicas",
+                    ["React", "Node.js", "MongoDB"]
+            ),
+            new Empresa(
+                    "Data Systems",
+                    "contato@datasystems.com",
+                    "234.567.890/0001-05",
+                    "Canadá",
+                    "ON",
+                    "23456-789",
+                    "Soluções de gerenciamento de dados",
+                    ["SQL", "Power BI", "Big Data"]
+            )
+    ]
 
     void cadastrarCandidato(Candidato candidato){
         candidatos.add(candidato)
