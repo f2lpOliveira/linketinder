@@ -15,4 +15,9 @@ class Cadastro {
     void cadastrarEmpresa(Empresa empresa){
         empresas.add(empresa)
     }
+
+    void listarCandidatos(){
+
+        candidatos.each {candidato -> println("Nome: ${candidato.nome}, Email: ${candidato.email}, CPF: ${candidato.cpf}, Idade: ${candidato.idade}, Estado: ${candidato.estado}, CEP: ${candidato.cep}, Descrição Pessoal: ${candidato.descricaoPessoal}, Competências: ${candidato.competencias}, ")}
+    }
 }
