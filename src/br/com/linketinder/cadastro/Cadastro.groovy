@@ -16,7 +16,7 @@ class Cadastro {
             "Me formei em Engenharia de software pela Estácio.",
             ["Java", "JavaScript", "Git"]
     ),
-    new Candidato(
+            new Candidato(
             "Priscila",
             "priscila@email.com",
             "987.654.321-00",
