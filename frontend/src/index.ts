@@ -1,3 +1,3 @@
-const names = ['freire']
+import {myName} from './create'
 
-console.log(names)
+console.log (myName)
