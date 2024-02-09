@@ -1,3 +1,24 @@
 .h-77{
     height: 77%;
 }
+.profile img {
+    max-width: 150px;
+    height: auto;
+}
+
+.btn98 {
+    background-color: #cccccc;
+    border: 1px solid #000000;
+    color: #000000;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn98:hover {
+    background-color: #999999;
+}
+
+.btn98:active {
+    background-color: #666666;
+}
