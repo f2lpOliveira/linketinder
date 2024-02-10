@@ -3,7 +3,9 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     entry: {
-        index: ['./src/index.ts']
+        index: ['./src/index.ts'],
+        cadastroCandidato: './src/cadastroCandidato.ts',
+        cadastroEmpresa: './src/cadastroEmpresa.ts'
     },
     module: {
         rules: [
