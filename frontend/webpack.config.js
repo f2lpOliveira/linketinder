@@ -6,7 +6,8 @@ module.exports = {
         index: ['./src/index.ts'],
         cadastroCandidato: './src/cadastroCandidato.ts',
         cadastroEmpresa: './src/cadastroEmpresa.ts',
-        perfilCandidato: './src/perfilCandidato.ts'
+        perfilCandidato: './src/perfilCandidato.ts',
+        listarLocalStorage: './src/listarLocalStorage.ts'
     },
     module: {
         rules: [
