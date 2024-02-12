@@ -4,9 +4,9 @@ module.exports = {
     mode: 'production',
     entry: {
         index: ['./src/index.ts'],
-        cadastroCandidato: './src/Controller/cadastroCandidato.ts'
+        cadastroCandidato: './src/Controller/cadastroCandidato.ts',
         // cadastroEmpresa: './src/cadastroEmpresa.ts',
-        // perfilCandidato: './src/perfilCandidato.ts',
+        perfilCandidato: './src/Controller/perfilCandidato.ts'
         // perfilEmpresa: './src/perfilEmpresa.ts',
         // listarLocalStorage: './src/listarLocalStorage.ts'
     },

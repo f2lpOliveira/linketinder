@@ -1,25 +1,7 @@
-interface CadastroCandidato {
-    nome: string;
-    idade: number;
-    cpf: string;
-    estado: string;
-    cep: string;
-    email: string;
-    competencias: string[];
-    descricao: string;
-}
+import { CandidatoUsuario } from "../Models/CandidatoUsuario";
+import {BDCandidato} from "../DAO/BDCandidato";
 
-function obterDadosCandidato(): CadastroCandidato | null {
-    const cpfParam = new URLSearchParams(window.location.search).get('cpf');
-    if (!cpfParam) return null;
-
-    const candidatoJSON = localStorage.getItem(cpfParam);
-    if (!candidatoJSON) return null;
-
-    return JSON.parse(candidatoJSON);
-}
-
-function preencherPerfilCandidato(candidato: CadastroCandidato): void {
+function preencherPerfilCandidato(candidato: CandidatoUsuario): void {
     const nomeElement = document.querySelector('.nome');
     if (nomeElement) nomeElement.textContent = candidato.nome;
 
@@ -54,7 +36,16 @@ function preencherPerfilCandidato(candidato: CadastroCandidato): void {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const candidato = obterDadosCandidato();
+    const bdCandidato = new BDCandidato();
+    const candidatos = bdCandidato.get();
+
+    const cpfParam = new URLSearchParams(window.location.search).get("cpf");
+    if (!cpfParam) {
+        console.error("CPF não encontrado na URL.");
+        return;
+    }
+
+    const candidato = candidatos.find((c: CandidatoUsuario) => c.cpf === cpfParam);
     if (candidato) {
         preencherPerfilCandidato(candidato);
     } else {
