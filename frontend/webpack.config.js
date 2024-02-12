@@ -7,6 +7,7 @@ module.exports = {
         cadastroCandidato: './src/cadastroCandidato.ts',
         cadastroEmpresa: './src/cadastroEmpresa.ts',
         perfilCandidato: './src/perfilCandidato.ts',
+        perfilEmpresa: './src/perfilEmpresa.ts',
         listarLocalStorage: './src/listarLocalStorage.ts'
     },
     module: {
