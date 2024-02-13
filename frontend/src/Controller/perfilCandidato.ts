@@ -2,6 +2,7 @@ import { CandidatoUsuario } from "../Models/CandidatoUsuario";
 import { CandidatoEmpresa } from "../Models/CandidatoEmpresa";
 import {BDCandidato} from "../DAO/BDCandidato";
 import { BDEmpresa } from "../DAO/BDEmpresa";
+import {mascararNome, mascararEmail, mascararCNPJ} from "../Utils/Utils";
 
 function preencherPerfilCandidato(candidato: CandidatoUsuario): void {
     const nomeElement = document.querySelector('.nome');
@@ -68,9 +69,9 @@ function listarEmpresa(empresas: CandidatoEmpresa[]): void {
         empresas.forEach((empresa: CandidatoEmpresa) => {
             listaEmpresasElement.innerHTML += `
                 <div class="empresa">
-                    <h2>${empresa.nome}</h2>
-                    <p>Email: ${empresa.email}</p>
-                    <p>CNPJ: ${empresa.cnpj}</p>
+                    <h2>${mascararNome(empresa.nome)}</h2>
+                    <p>Email: ${mascararEmail(empresa.email)}</p>
+                    <p>CNPJ: ${mascararCNPJ(empresa.cnpj)}</p>
                     <p>País: ${empresa.pais}</p>
                     <p>Estado: ${empresa.estado}</p>
                     <p>Competências: ${empresa.competencias.slice(0, -1).join(", ")}${empresa.competencias.length > 1 ? ',' : ''} ${empresa.competencias.slice(-1)}</p>                    

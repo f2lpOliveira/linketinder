@@ -8,7 +8,6 @@ module.exports = {
         cadastroEmpresa: './src/Controller/cadastroEmpresa.ts',
         perfilCandidato: './src/Controller/perfilCandidato.ts',
         perfilEmpresa: './src/Controller/perfilEmpresa.ts'
-        // listarLocalStorage: './src/listarLocalStorage.ts'
     },
     module: {
         rules: [
