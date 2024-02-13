@@ -1,6 +1,7 @@
 .h-77{
     height: 77%;
 }
+
 .profile img {
     max-width: 150px;
     height: auto;
@@ -21,4 +22,11 @@
 
 .btn98:active {
     background-color: #666666;
+}
+
+.paginaInicial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
