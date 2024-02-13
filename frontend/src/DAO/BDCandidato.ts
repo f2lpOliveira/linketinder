@@ -1,3 +1,5 @@
+import {CandidatoUsuario} from "../Models/CandidatoUsuario";
+
 export class BDCandidato {
     add(candidato: any): void {
         let candidatos = this.get();
@@ -5,7 +7,7 @@ export class BDCandidato {
         localStorage.setItem("candidatos", JSON.stringify(candidatos));
     }
 
-    get(): any[] {
+    get(): CandidatoUsuario[] {
         const local = localStorage.getItem("candidatos");
         if (local) {
             return JSON.parse(local);
