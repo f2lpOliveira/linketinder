@@ -16,3 +16,7 @@ export function mascararEmail(email: string): string {
 export function mascararCPF(cpf: string): string {
     return cpf.replace(/\d/g, '*');
 }
+
+export function mascararCNPJ(cnpj: string): string {
+    return cnpj.replace(/\d/g, '*');
+}
