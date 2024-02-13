@@ -1,5 +1,7 @@
 import { CandidatoUsuario } from "../Models/CandidatoUsuario";
+import { CandidatoEmpresa } from "../Models/CandidatoEmpresa";
 import {BDCandidato} from "../DAO/BDCandidato";
+import { BDEmpresa } from "../DAO/BDEmpresa";
 
 function preencherPerfilCandidato(candidato: CandidatoUsuario): void {
     const nomeElement = document.querySelector('.nome');
@@ -51,4 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('Candidato não encontrado.');
     }
+
+    const bdEmpresa = new BDEmpresa();
+    const empresas = bdEmpresa.get();
+    listarEmpresa(empresas);
 });
+
+function listarEmpresa(empresas: CandidatoEmpresa[]): void {
+    const listaEmpresasElement = document.getElementById("lista-empresas");
+
+    if (listaEmpresasElement) {
+        listaEmpresasElement.innerHTML = '';
+
+        empresas.forEach((empresa: CandidatoEmpresa) => {
+            listaEmpresasElement.innerHTML += `
+                <div class="empresa">
+                    <h2>${empresa.nome}</h2>
+                    <p>Email: ${empresa.email}</p>
+                    <p>CNPJ: ${empresa.cnpj}</p>
+                    <p>País: ${empresa.pais}</p>
+                    <p>Estado: ${empresa.estado}</p>
+                    <p>Competências: ${empresa.competencias.slice(0, -1).join(", ")}${empresa.competencias.length > 1 ? ',' : ''} ${empresa.competencias.slice(-1)}</p>                    
+                    <p>Descrição: ${empresa.descricao}</p>
+                </div>
+            `;
+        });
+    }
+}
