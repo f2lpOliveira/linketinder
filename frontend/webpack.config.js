@@ -7,7 +7,8 @@ module.exports = {
         cadastroCandidato: './src/Controller/cadastroCandidato.ts',
         cadastroEmpresa: './src/Controller/cadastroEmpresa.ts',
         perfilCandidato: './src/Controller/perfilCandidato.ts',
-        perfilEmpresa: './src/Controller/perfilEmpresa.ts'
+        perfilEmpresa: './src/Controller/perfilEmpresa.ts',
+        formatarDocumento: './src/Utils/formatarDocumento.ts'
     },
     module: {
         rules: [
