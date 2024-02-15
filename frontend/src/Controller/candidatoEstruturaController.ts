@@ -1,5 +1,5 @@
 import {CandidatoUsuario} from "../Models/CandidatoUsuario";
-import {mascararCPF, mascararEmail, mascararNome} from "../Utils/Utils";
+import { mascararNome, mascararEmail, mascararCPF, mascararCNPJ } from "../Utils/mascararDadosPessoais";
 
 export function construirEstruturaCandidato(candidato: CandidatoUsuario): string {
     return `

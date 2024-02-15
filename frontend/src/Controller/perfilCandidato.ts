@@ -2,7 +2,7 @@ import { CandidatoUsuario } from "../Models/CandidatoUsuario";
 import { CandidatoEmpresa } from "../Models/CandidatoEmpresa";
 import {BDCandidato} from "../DAO/BDCandidato";
 import { BDEmpresa } from "../DAO/BDEmpresa";
-import {mascararNome, mascararEmail, mascararCNPJ} from "../Utils/Utils";
+import {mascararNome, mascararEmail, mascararCNPJ} from "../Utils/mascararDadosPessoais";
 
 function preencherPerfilCandidato(candidato: CandidatoUsuario): void {
     const nomeElement = document.querySelector('.nome');

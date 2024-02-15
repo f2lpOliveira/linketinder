@@ -5,12 +5,10 @@ export function mascararNome(nome: string): string {
 }
 
 export function mascararEmail(email: string): string {
-    const partes = email.split('@');
-    const primeira_parte = partes[0];
-    const tamanho = primeira_parte.length;
-
-    const parte_mascarada = primeira_parte.slice(0, 3) + "***" + primeira_parte.slice(tamanho - 2, tamanho);
-    return parte_mascarada + '@' + partes[1];
+    const [usuario, dominio] = email.split('@');
+    const usuarioMascarado = usuario.slice(0, 3) + '***' + usuario.slice(-2);
+    const dominioMascarado = dominio.slice(3, 0) + '*****' + dominio.slice(-8);
+    return usuarioMascarado + '@' + dominioMascarado;
 }
 
 export function mascararCPF(cpf: string): string {
