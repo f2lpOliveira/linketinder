@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      - 'POSTGRES_PASSWORD=@celeraZG5'
+      - 'POSTGRES_DB=linketinder'
+    ports:
+      - '5432:5432'
+    networks:
+      - db_postgres
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=postgres@postgres.com'
+      - 'PGADMIN_DEFAULT_PASSWORD=postgres'
+    ports:
+      - '15432:80'
+    networks:
+      - db_postgres
+    restart: always
+
+networks:
+  db_postgres:
+    driver: bridge
