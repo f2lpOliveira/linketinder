@@ -6,35 +6,29 @@ class DBOperacoes {
 
     Sql sql = Sql.newInstance(DBConexao.conexao())
 
-    void createTable(String nomeTabela){
+    void createTable(String nomeTabela, List<String> campos) {
         try {
-            def resultado = sql.firstRow("""                
-                SELECT EXISTS(
-                    SELECT 1
-                    FROM   information_schema.tables 
-                    WHERE  table_name = $nomeTabela
-                )
-            """)
+            def resultado = sql.firstRow("""
+            SELECT EXISTS(
+                SELECT 1
+                FROM   information_schema.tables 
+                WHERE  table_name = $nomeTabela
+            )
+        """)
             if (resultado.EXISTS) {
-                println("A tabela já existe.")
+                println("""A tabela $nomeTabela já existe.""")
                 return
             }
+
+            def camposString = campos.join(", ")
+
             String query = """
-                CREATE TABLE $nomeTabela (
-                    empid SERIAL,
-                    nome VARCHAR(10),
-                    sobrenome VARCHAR(10),
-                    data_de_nascimento DATE,
-                    email VARCHAR(50),
-                    cpf VARCHAR(11) PRIMARY KEY,
-                    pais VARCHAR(15),
-                    cep VARCHAR(8),
-                    descricao_pessoal VARCHAR(200),
-                    senha VARCHAR(12)
-                )
-            """
+            CREATE TABLE $nomeTabela (
+                $camposString
+            )
+        """
             sql.execute(query)
-            println("Tabela criada com sucesso!")
+            println("""Tabela $nomeTabela criada com sucesso!""")
         } catch (Exception e) {
             e.printStackTrace()
         }
