@@ -12,6 +12,7 @@ List<String> atributoCandidatos = Arrays.asList(
         "cpf VARCHAR(11) PRIMARY KEY",
         "pais VARCHAR(15)",
         "cep VARCHAR(8)",
+        "staks VARCHAR(8)",
         "descricao VARCHAR(200)",
         "senha VARCHAR(12)"
 )
