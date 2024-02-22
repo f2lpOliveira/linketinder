@@ -1,6 +1,19 @@
 package br.com.linketinder.DAO
 
-class DadosCandidatos {
+class CandidatosDAO {
+
+    List<String> atributoCandidatos = Arrays.asList(
+            "empid SERIAL",
+            "nome VARCHAR(100)",
+            "sobrenome VARCHAR(100)",
+            "data_de_nascimento DATE",
+            "email VARCHAR(255)",
+            "cpf VARCHAR(15) PRIMARY KEY",
+            "pais VARCHAR(100)",
+            "cep VARCHAR(15)",
+            "descricao TEXT",
+            "senha VARCHAR(255)"
+    )
 
     List<Map<String, Object>> dadosCandidatos = [
             [
@@ -62,7 +75,7 @@ class DadosCandidatos {
 
     DBOperacoes dbOperacoes
 
-    DadosCandidatos(DBOperacoes dbOperacoes) {
+    CandidatosDAO(DBOperacoes dbOperacoes) {
         this.dbOperacoes = dbOperacoes
     }
 
