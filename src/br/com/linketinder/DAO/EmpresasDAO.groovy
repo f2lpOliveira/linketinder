@@ -72,4 +72,18 @@ class EmpresasDAO {
             dbOperacoes.insert("Empresas", empresa)
         }
     }
+
+    List<Map<String, Object>> buscarEmpresas(String condicao, String orderBy = "empid ASC") {
+        return dbOperacoes.select("Empresas", condicao, orderBy)
+    }
+
+    void atualizarCandidato(String cnpj, Map<String, Object> novosDados) {
+        String condicao = "cnpj = '$cnpj'"
+        dbOperacoes.update("Empresas", novosDados, condicao)
+    }
+
+    void excluirCandidato(String cnpj) {
+        String condicao = "cnpj = '$cnpj'"
+        dbOperacoes.delete("Empresas", condicao)
+    }
 }
