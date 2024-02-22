@@ -13,12 +13,13 @@ dadosStacks = new StacksDAO(dbOperacoes)
 dadosVagas = new VagasDAO(dbOperacoes)
 
 
-dbOperacoes.createTable("candidatos", dadosCandidatos.atributoCandidatos)
-dadosCandidatos.inserirDadosNaTabelaCandidatos()
-dbOperacoes.createTable("empresas", dadosEmpresas.atributoEmpresas)
-dadosEmpresas.inserirDadosNaTabelaEmpresas()
-dbOperacoes.createTable("stacks", dadosStacks.atributoStacks)
-dbOperacoes.createTable("vagas", dadosVagas.atributoVagas)
+//dbOperacoes.createTable("candidatos", dadosCandidatos.atributoCandidatos)
+//dadosCandidatos.inserirDadosNaTabelaCandidatos()
+//dbOperacoes.createTable("empresas", dadosEmpresas.atributoEmpresas)
+//dadosEmpresas.inserirDadosNaTabelaEmpresas()
+//dbOperacoes.createTable("stacks", dadosStacks.atributoStacks)
+//dbOperacoes.createTable("vagas", dadosVagas.atributoVagas)
+
 
 
 

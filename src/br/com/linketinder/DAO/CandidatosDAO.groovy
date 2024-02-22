@@ -84,4 +84,18 @@ class CandidatosDAO {
             dbOperacoes.insert("Candidatos", candidato)
         }
     }
+
+    List<Map<String, Object>> buscarCandidatos(String condicao, String orderBy = "empid ASC") {
+        return dbOperacoes.select("Candidatos", condicao, orderBy)
+    }
+
+    void atualizarCandidato(String cpf, Map<String, Object> novosDados) {
+        String condicao = "cpf = '$cpf'"
+        dbOperacoes.update("Candidatos", novosDados, condicao)
+    }
+
+    void excluirCandidato(String cpf) {
+        String condicao = "cpf = '$cpf'"
+        dbOperacoes.delete("Candidatos", condicao)
+    }
 }
