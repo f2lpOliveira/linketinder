@@ -28,4 +28,15 @@ class DBConexao {
         }
         return connection
     }
+
+    static void fecharConexao() {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close()
+                println("Conexão encerrada!")
+            }
+        } catch (Exception e) {
+            e.printStackTrace()
+        }
+    }
 }
