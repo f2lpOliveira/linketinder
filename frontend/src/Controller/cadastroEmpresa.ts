@@ -41,11 +41,17 @@ formEmpresa?.addEventListener("submit", (event) => {
 function validarCamposObrigatoriosEmpresa(): boolean {
     const camposObrigatorios: string[] = ["nome", "email", "cnpj", "pais", "estado", "cep", "descricao"];
     let todosCamposPreenchidos = true;
+    const emailRegex = /^[^\s@]+@(?!.*\d)[^\s@]+\.[^\s@]+$/;
 
     camposObrigatorios.forEach((campo) => {
         const input: HTMLInputElement | null = document.getElementById(campo) as HTMLInputElement;
         if (!input || input.value.trim() === "") {
             todosCamposPreenchidos = false;
+        } else if (campo === "email") {
+            if (!emailRegex.test(input.value)) {
+                todosCamposPreenchidos = false;
+                alert('O e-mail inserido não é válido. Por favor, verifique e tente novamente.');
+            }
         }
     });
 
