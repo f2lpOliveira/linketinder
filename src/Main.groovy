@@ -19,6 +19,20 @@ dadosVagas = new VagasDAO(dbOperacoes)
 //dadosEmpresas.inserirDadosNaTabelaEmpresas()
 //dbOperacoes.createTable("stacks", dadosStacks.atributoStacks)
 //dbOperacoes.createTable("vagas", dadosVagas.atributoVagas)
+//dadosCandidatos.excluirCandidato("123.456.789-03")
+//dadosCandidatos.atualizarCandidato("123.456.789-03", [
+//        nome              : "Kaizen",
+//        sobrenome         : "Jutsu",
+//        data_de_nascimento: "2004-09-04",
+//        email             : "yuji.itadori@example.com",
+//        cpf               : "123.456.789-10",
+//        pais              : "Japão",
+//        cep               : "12345-678",
+//        descricao         : "Estudante do primeiro ano do ensino médio.",
+//        senha             : "senha123"
+//])
+//dadosCandidatos.buscarCandidatos("cep = '12345-678'", "empid ASC")
+
 
 
 
