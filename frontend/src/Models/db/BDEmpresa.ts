@@ -1,4 +1,4 @@
-import {CandidatoEmpresa} from "../Models/CandidatoEmpresa";
+import {CandidatoEmpresa} from "../CandidatoEmpresa";
 
 export class BDEmpresa {
     add(empresa: any): void {

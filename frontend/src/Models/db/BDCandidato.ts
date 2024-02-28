@@ -1,4 +1,4 @@
-import {CandidatoUsuario} from "../Models/CandidatoUsuario";
+import {CandidatoUsuario} from "../CandidatoUsuario";
 
 export class BDCandidato {
     add(candidato: any): void {

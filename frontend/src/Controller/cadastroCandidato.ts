@@ -1,4 +1,4 @@
-import { BDCandidato } from "../DAO/BDCandidato";
+import { BDCandidato } from "../Models/db/BDCandidato";
 import { CandidatoUsuario } from "../Models/CandidatoUsuario";
 
 let nomeCandidato: string

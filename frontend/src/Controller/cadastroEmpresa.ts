@@ -1,4 +1,4 @@
-import { BDEmpresa } from "../DAO/BDEmpresa";
+import { BDEmpresa } from "../Models/db/BDEmpresa";
 import { CandidatoEmpresa } from "../Models/CandidatoEmpresa";
 
 let nomeEmpresa: string

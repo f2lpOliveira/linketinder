@@ -1,7 +1,7 @@
 import { CandidatoUsuario } from "../Models/CandidatoUsuario";
 import { CandidatoEmpresa } from "../Models/CandidatoEmpresa";
-import {BDCandidato} from "../DAO/BDCandidato";
-import { BDEmpresa } from "../DAO/BDEmpresa";
+import {BDCandidato} from "../Models/db/BDCandidato";
+import { BDEmpresa } from "../Models/db/BDEmpresa";
 import {mascararNome, mascararEmail, mascararCNPJ} from "../Utils/mascararDadosPessoais";
 
 function preencherPerfilCandidato(candidato: CandidatoUsuario): void {
