@@ -17,7 +17,7 @@
 - Navegue até o diretório do clone e entre na pasta src.
 
 ### 4. Executar o Programa
-- Use o comando groovy seguido pelo nome do arquivo Main.groovy para executar o programa.
+- Use o comando groovy seguido pelo nome do arquivo br.com.linketinder.Main.groovy para executar o programa.
 
 ### 5. Interagir com o Programa:
 - Após a execução, o programa exibirá um menu simples no terminal. Siga as opções do menu para interagir com o Linketinder.
