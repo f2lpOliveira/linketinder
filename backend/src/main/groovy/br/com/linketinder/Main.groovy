@@ -1,12 +1,7 @@
 package br.com.linketinder
 
-import br.com.linketinder.DAO.DBOperacoes
-import br.com.linketinder.DAO.CandidatosDAO
-import br.com.linketinder.DAO.EmpresasDAO
-import br.com.linketinder.DAO.StacksDAO
-import br.com.linketinder.DAO.VagasDAO
 
-import br.com.linketinder.menuIterativo.Menu
+import br.com.linketinder.view.Menu
 
 //dbOperacoes = new DBOperacoes()
 //dadosCandidatos = new CandidatosDAO(dbOperacoes)
