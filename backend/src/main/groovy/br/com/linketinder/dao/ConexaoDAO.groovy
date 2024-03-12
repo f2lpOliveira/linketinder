@@ -3,11 +3,11 @@ package br.com.linketinder.dao
 import java.sql.Connection
 import java.sql.DriverManager
 
-class DBConexao {
+class ConexaoDAO {
 
     static Connection connection = null
 
-    private DBConexao(){}
+    ConexaoDAO(){}
 
     static Connection conexao() {
 

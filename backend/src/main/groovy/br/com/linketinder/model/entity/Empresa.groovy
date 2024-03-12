@@ -1,4 +1,4 @@
-package br.com.linketinder.model
+package br.com.linketinder.model.entity
 
 class Empresa extends Usuario{
 

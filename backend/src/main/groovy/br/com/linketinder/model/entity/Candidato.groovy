@@ -1,4 +1,4 @@
-package br.com.linketinder.model
+package br.com.linketinder.model.entity
 
 class Candidato extends Usuario {
 
@@ -10,4 +10,6 @@ class Candidato extends Usuario {
         this.cpf = cpf
         this.idade = idade
     }
+
+
 }

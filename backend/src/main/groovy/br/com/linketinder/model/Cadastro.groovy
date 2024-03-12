@@ -1,7 +1,7 @@
-package br.com.linketinder.controller
+package br.com.linketinder.model
 
-import br.com.linketinder.model.Candidato
-import br.com.linketinder.model.Empresa
+import br.com.linketinder.model.entity.Candidato
+import br.com.linketinder.model.entity.Empresa
 
 class Cadastro {
 
