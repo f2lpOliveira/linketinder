@@ -1,8 +1,8 @@
 package br.com.linketinder
 
 import br.com.linketinder.cadastro.Cadastro
-import br.com.linketinder.candidato.Candidato
-import br.com.linketinder.empresa.Empresa
+import br.com.linketinder.entidades.Candidato
+import br.com.linketinder.entidades.Empresa
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test

@@ -1,6 +1,6 @@
 package br.com.linketinder.DAO
 
-class StacksDAO {
+class CompetenciasDAO {
 
     List<String> atributoStacks = Arrays.asList(
             "empid SERIAL",
@@ -9,7 +9,7 @@ class StacksDAO {
 
     DBOperacoes dbOperacoes
 
-    StacksDAO(DBOperacoes dbOperacoes) {
+    CompetenciasDAO(DBOperacoes dbOperacoes) {
         this.dbOperacoes = dbOperacoes
     }
 
