@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.linketinder.TesteCadastro" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-03-21T13:06:41" hostname="ubuntu" time="0.374">
+  <properties/>
+  <testcase name="testCadastrarEmpresa()" classname="br.com.linketinder.TesteCadastro" time="0.203"/>
+  <testcase name="testCaminhoDoTeste()" classname="br.com.linketinder.TesteCadastro" time="0.141"/>
+  <testcase name="testCadastrarCandidato()" classname="br.com.linketinder.TesteCadastro" time="0.02"/>
+  <system-out><![CDATA[Diretório atual durante a execução do teste: /home/devfullstack/Área de Trabalho/SOLID_linketinder/backend
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
