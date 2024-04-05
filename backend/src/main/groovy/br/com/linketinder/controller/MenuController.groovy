@@ -10,6 +10,6 @@ class MenuController {
     }
 
     void iniciarIteracaoCandidato(){
-        new CandidatoView().menu()
+        new CandidatoView().menuOpcoesCandidato()
     }
 }

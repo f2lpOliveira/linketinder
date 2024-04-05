@@ -6,11 +6,11 @@ import br.com.linketinder.view.CandidatoView
 class CandidatoController {
 
     void cadastrarCandidato(){
-        new CandidatoView().cadastrar()
+        new CandidatoView().menuCadastrarCandidato()
     }
 
     void listarCandidatos(){
-        new CandidatoView().listar()
+        new CandidatoView().menuListarCandidatos()
     }
 
     void atualizarCandidato(){
