@@ -10,6 +10,4 @@ class Candidato extends Usuario {
         this.cpf = cpf
         this.idade = idade
     }
-
-
 }

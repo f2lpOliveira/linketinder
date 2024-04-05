@@ -51,7 +51,7 @@ class CandidatoView {
     void menuCadastrarCandidato() {
         Scanner scanner = new Scanner(System.in)
 
-        print "Digite o nome do candidato: "
+        print "\nDigite o nome do candidato: "
         String nome = scanner.nextLine()
 
         print "Digite o email do candidato: "
@@ -78,6 +78,8 @@ class CandidatoView {
 
         Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
         candidatoDAO.dbCreate(candidato)
+
+        println("Cadastro efetuado com sucesso!")
     }
 
     void menuListarCandidatos() {
@@ -106,6 +108,51 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
                 println ""
             }
         }
+    }
+
+    void menuAtualizarCandidato(){
+        Scanner scanner = new Scanner(System.in)
+
+        print "\nDigite seu CPF para atualizar seu cadastro: "
+        String cpf = scanner.nextLine()
+
+        print "Confirme seu nome: "
+        String nome = scanner.nextLine()
+
+        print "Confirme seu email: "
+        String email = scanner.nextLine()
+
+        print "Confirme sua idade: "
+        int idade = scanner.nextInt()
+        scanner.nextLine()
+
+        print "Confirme seu estado: "
+        String estado = scanner.nextLine()
+
+        print "Confirme seu CEP: "
+        String cep = scanner.nextLine()
+
+        print "Confirme sua descrição: "
+        String descricao = scanner.nextLine()
+
+        print "Confirme suas competências (separadas por vírgula): "
+        List<String> competencias = Arrays.asList(scanner.nextLine().split(',')).collect { it.trim() }
+
+        Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
+        candidatoDAO.dbUpdate(cpf, candidato)
+
+        println("Cadastro atualizado com sucesso!")
+    }
+
+    void menuDeletarCandidato(){
+        Scanner scanner = new Scanner(System.in)
+
+        print "Digite seu CPF para excluir seu cadastro: "
+        String cpf = scanner.nextLine()
+
+        candidatoDAO.dbDelete(cpf)
+
+        println("Cadastro removido com sucesso!")
     }
 
     void exibirOpcoesCandidato(){

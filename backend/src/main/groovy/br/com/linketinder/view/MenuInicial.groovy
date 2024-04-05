@@ -24,7 +24,7 @@ class MenuInicial {
                     new EmpresaView().menu()
                     break
                 case '0':
-                    println("Até logo!")
+                    println("\nAté logo!")
                     condicao = false
                     break
                 default:

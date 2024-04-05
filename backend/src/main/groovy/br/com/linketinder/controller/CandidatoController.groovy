@@ -14,10 +14,10 @@ class CandidatoController {
     }
 
     void atualizarCandidato(){
-        new CandidatoModel().update()
+        new CandidatoView().menuAtualizarCandidato()
     }
 
     void excluirCandidato(){
-        new CandidatoModel().delete()
+        new CandidatoView().menuDeletarCandidato()
     }
 }

@@ -19,28 +19,30 @@ class CandidatoDAO {
             def empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
 
             candidato.competencias.each { competencia ->
-                sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, (SELECT competencia_id FROM competencias WHERE nome = ?))",
+                sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, (SELECT competencia_id FROM competencias WHERE nome = ? ORDER BY competencia_id LIMIT 1))",
                         [empid, competencia])
             }
-
-            println("Candidato adicionado com sucesso!")
         } catch (Exception e) {
-            println("Erro ao adicionar candidato: ${e.message}")
+            e.printStackTrace()
         }
     }
 
     List<Candidato> dbRead() {
-        List<Candidato> candidatos = sql.rows("SELECT * FROM candidatos")
+        try {
+            List<Candidato> candidatos = sql.rows("SELECT * FROM candidatos")
 
-        candidatos.each { candidato ->
+            candidatos.each { candidato ->
 
-            def empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
+                def empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
 
-            candidato.competencias = sql.rows("SELECT nome FROM competencias " +
-                    "INNER JOIN candidato_competencias ON competencias.competencia_id = candidato_competencias.competencia_id " +
-                    "WHERE candidato_competencias.candidato_id = ?", [empid]).collect { it.nome }
+                candidato.competencias = sql.rows("SELECT nome FROM competencias " +
+                        "INNER JOIN candidato_competencias ON competencias.competencia_id = candidato_competencias.competencia_id " +
+                        "WHERE candidato_competencias.candidato_id = ?", [empid]).collect { it.nome }
+            }
+            return candidatos
+        }catch (Exception e){
+            e.printStackTrace()
         }
-        return candidatos
     }
 
     void dbUpdate(String cpf, Candidato candidato) {
@@ -68,10 +70,8 @@ class CandidatoDAO {
                 }
                 sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, ?)", [empid, competenciaId])
             }
-
-            println("Candidato e suas competências atualizados com sucesso!")
         } catch (Exception e) {
-            println("Erro ao atualizar candidato: ${e.message}")
+            e.printStackTrace()
         }
     }
 
@@ -82,10 +82,8 @@ class CandidatoDAO {
             sql.execute("DELETE FROM candidato_competencias WHERE candidato_id = ?", [empid])
 
             sql.execute("DELETE FROM candidatos WHERE cpf = ?", [cpf])
-
-            println("Candidato removido com sucesso!")
         } catch (Exception e) {
-            println("Erro ao remover candidato: ${e.message}")
+            e.printStackTrace()
         }
     }
 }
