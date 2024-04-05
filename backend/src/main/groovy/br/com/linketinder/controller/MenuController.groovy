@@ -1,10 +1,15 @@
 package br.com.linketinder.controller
 
-import br.com.linketinder.view.Menu
+import br.com.linketinder.view.CandidatoView
+import br.com.linketinder.view.MenuInicial
 
 class MenuController {
 
-    void iniciar(){
-        new Menu().iniciarMenu()
+    void iniciarIteracaoPrincipal(){
+        new MenuInicial().iniciar()
+    }
+
+    void iniciarIteracaoCandidato(){
+        new CandidatoView().menu()
     }
 }
