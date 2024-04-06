@@ -1,6 +1,7 @@
 package br.com.linketinder.dao
 
 import br.com.linketinder.model.entity.Candidato
+import groovy.sql.GroovyRowResult
 import groovy.sql.Sql
 
 class CandidatoDAO {
@@ -16,7 +17,7 @@ class CandidatoDAO {
                 sql.execute("INSERT INTO competencias (nome) VALUES (?)", [competencia])
             }
 
-            def empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
+            Integer empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
 
             candidato.competencias.each { competencia ->
                 sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, (SELECT competencia_id FROM competencias WHERE nome = ? ORDER BY competencia_id LIMIT 1))",
@@ -33,7 +34,7 @@ class CandidatoDAO {
 
             candidatos.each { candidato ->
 
-                def empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
+                Integer empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
 
                 candidato.competencias = sql.rows("SELECT nome FROM competencias " +
                         "INNER JOIN candidato_competencias ON competencias.competencia_id = candidato_competencias.competencia_id " +
@@ -58,12 +59,12 @@ class CandidatoDAO {
                     cpf
             ])
 
-            def empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
+            Integer empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
 
             sql.execute("DELETE FROM candidato_competencias WHERE candidato_id = ?", [empid])
 
             candidato.competencias.each { competencia ->
-                def competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia])?.competencia_id
+                Integer competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia])?.competencia_id
                 if (competenciaId == null) {
                     sql.execute("INSERT INTO competencias (nome) VALUES (?)", [competencia])
                     competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia]).competencia_id
@@ -77,7 +78,7 @@ class CandidatoDAO {
 
     boolean dbDelete(String cpf) {
         try {
-            def result = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf])
+            GroovyRowResult result = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf])
             if (result != null) {
                 Integer empid = result.empid
 

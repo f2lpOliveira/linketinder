@@ -2,24 +2,26 @@ package br.com.linketinder.view
 
 import br.com.linketinder.controller.CandidatoController
 import br.com.linketinder.model.entity.Candidato
+import br.com.linketinder.tools.Tools
 
 class CandidatoView {
 
     CandidatoController candidatoController
+    Tools tools
 
     CandidatoView() {
         this.candidatoController = new CandidatoController()
+        this.tools = new Tools()
     }
 
     void menuOpcoesCandidato(){
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
         Boolean condicao = true
 
         while (condicao) {
 
             exibirOpcoesCandidato()
-            String opcao = br.readLine()
+            String opcao = tools.entradaDados()
 
             switch (opcao) {
                 case '1':
@@ -46,32 +48,31 @@ class CandidatoView {
     }
 
     void menuCadastrarCandidato() {
-        Scanner scanner = new Scanner(System.in)
 
         print "\nDigite o nome do candidato: "
-        String nome = scanner.nextLine()
+        String nome = tools.entradaDados()
 
         print "Digite o email do candidato: "
-        String email = scanner.nextLine()
+        String email = tools.entradaDados()
 
         print "Digite o CPF do candidato: "
-        String cpf = scanner.nextLine()
+        String cpf = tools.entradaDados()
 
         print "Digite a idade do candidato: "
-        int idade = scanner.nextInt()
-        scanner.nextLine()
+        String idadeStr = tools.entradaDados()
+        int idade = Integer.parseInt(idadeStr)
 
         print "Digite o estado do candidato: "
-        String estado = scanner.nextLine()
+        String estado = tools.entradaDados()
 
         print "Digite o CEP do candidato: "
-        String cep = scanner.nextLine()
+        String cep = tools.entradaDados()
 
         print "Digite a descrição do candidato: "
-        String descricao = scanner.nextLine()
+        String descricao = tools.entradaDados()
 
         print "Digite as competências do candidato (separadas por vírgula): "
-        List<String> competencias = scanner.nextLine().split(',').collect { it.trim() }
+        List<String> competencias = tools.entradaDados().split(',').collect { it.trim() }
 
         Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
 
@@ -109,32 +110,31 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
     }
 
     void menuAtualizarCandidato(){
-        Scanner scanner = new Scanner(System.in)
 
         print "\nDigite seu CPF para atualizar seu cadastro: "
-        String cpf = scanner.nextLine()
+        String cpf = tools.entradaDados()
 
         print "Confirme seu nome: "
-        String nome = scanner.nextLine()
+        String nome = tools.entradaDados()
 
         print "Confirme seu email: "
-        String email = scanner.nextLine()
+        String email = tools.entradaDados()
 
         print "Confirme sua idade: "
-        int idade = scanner.nextInt()
-        scanner.nextLine()
+        String idadeStr = tools.entradaDados()
+        int idade = Integer.parseInt(idadeStr)
 
         print "Confirme seu estado: "
-        String estado = scanner.nextLine()
+        String estado = tools.entradaDados()
 
         print "Confirme seu CEP: "
-        String cep = scanner.nextLine()
+        String cep = tools.entradaDados()
 
         print "Confirme sua descrição: "
-        String descricao = scanner.nextLine()
+        String descricao = tools.entradaDados()
 
         print "Confirme suas competências (separadas por vírgula): "
-        List<String> competencias = Arrays.asList(scanner.nextLine().split(',')).collect { it.trim() }
+        List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
 
         Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
 
@@ -144,10 +144,9 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
     }
 
     void menuDeletarCandidato(){
-        Scanner scanner = new Scanner(System.in)
 
         print "\nDigite seu CPF para excluir seu cadastro: "
-        String cpf = scanner.nextLine()
+        String cpf = tools.entradaDados()
 
         boolean candidatoDeletado = candidatoController.deletarCandidatoDAO(cpf)
 
