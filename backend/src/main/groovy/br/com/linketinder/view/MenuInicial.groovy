@@ -21,7 +21,7 @@ class MenuInicial {
                     menuController.iniciarIteracaoCandidato()
                     break
                 case '2':
-                    new EmpresaView().menu()
+                    menuController.iniciarIteracaoEmpresa()
                     break
                 case '0':
                     println("\nAté logo!")

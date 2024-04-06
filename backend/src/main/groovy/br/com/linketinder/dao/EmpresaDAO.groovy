@@ -10,9 +10,8 @@ class EmpresaDAO {
     void dbCreate(Empresa empresa) {
         try {
             sql.execute("INSERT INTO empresas (nome, email, cnpj, pais, estado, cep, descricao) VALUES (?, ?, ?, ?, ?, ?, ?)", [empresa.nome, empresa.email, empresa.cnpj, empresa.pais, empresa.estado, empresa.cep, empresa.descricao])
-            println("Empresa adicionada com sucesso!")
         } catch (Exception e) {
-            println("Erro ao adicionar empresa: ${e.message}")
+            e.printStackTrace()
         }
     }
 
@@ -32,18 +31,16 @@ class EmpresaDAO {
                     empresa.descricao,
                     cnpj
             ])
-            println("Empresa atualizada com sucesso!")
         } catch (Exception e) {
-            println("Erro ao atualizar empresa: ${e.message}")
+            e.printStackTrace()
         }
     }
 
     void dbDelete(String cnpj) {
         try {
             sql.execute("DELETE FROM empresas WHERE cnpj = ?", [cnpj])
-            println("Empresa removida com sucesso!")
         } catch (Exception e) {
-            println("Erro ao remover empresa: ${e.message}")
+            e.printStackTrace()
         }
     }
 }

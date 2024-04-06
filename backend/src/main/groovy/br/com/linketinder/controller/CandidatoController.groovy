@@ -1,23 +1,22 @@
 package br.com.linketinder.controller
 
-import br.com.linketinder.model.CandidatoModel
 import br.com.linketinder.view.CandidatoView
 
 class CandidatoController {
 
-    void cadastrarCandidato(){
+    void cadastrarCandidato() {
         new CandidatoView().menuCadastrarCandidato()
     }
 
-    void listarCandidatos(){
+    void listarCandidatos() {
         new CandidatoView().menuListarCandidatos()
     }
 
-    void atualizarCandidato(){
+    void atualizarCandidato() {
         new CandidatoView().menuAtualizarCandidato()
     }
 
-    void excluirCandidato(){
+    void excluirCandidato() {
         new CandidatoView().menuDeletarCandidato()
     }
 }

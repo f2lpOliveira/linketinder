@@ -158,8 +158,8 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
     void exibirOpcoesCandidato(){
         print """
 Escolha uma das opções a seguir:
-1. Cadastro
-2. Listar Empresas
+1. Cadastrar
+2. Listar Vagas
 3. Atualizar Cadastro
 4. Excluir Cadastro
 0. Voltar ao Menu Anterior

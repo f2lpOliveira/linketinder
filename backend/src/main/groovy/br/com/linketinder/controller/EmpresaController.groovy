@@ -1,22 +1,22 @@
 package br.com.linketinder.controller
 
-import br.com.linketinder.model.EmpresaModel
+import br.com.linketinder.view.EmpresaView
 
 class EmpresaController {
 
-    void inserirEmpresa(){
-        new EmpresaModel().create()
+    void cadastrarEmpresa() {
+        new EmpresaView().menuCadastrarEmpresa()
     }
 
-    void listarEmpresas(){
-        new EmpresaModel().read()
+    void listarEmpresas() {
+        new EmpresaView().menuListarEmpresas()
     }
 
-    void atualizarEmpresa(){
-        new EmpresaModel().update()
+    void atualizarEmpresa() {
+        new EmpresaView().menuAtualizarEmpresa()
     }
 
-    void excluirEmpresa(){
-        new EmpresaModel().delete()
+    void excluirEmpresa() {
+        new EmpresaView().menuDeletarEmpresa()
     }
 }
