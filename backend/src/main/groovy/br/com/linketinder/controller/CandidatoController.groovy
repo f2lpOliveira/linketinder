@@ -6,35 +6,38 @@ import br.com.linketinder.view.CandidatoView
 
 class CandidatoController {
 
+    static CandidatoView candidatoView = new CandidatoView()
+    CandidatoDAO candidatoDAO = new CandidatoDAO()
+
     void exibirFormularioCadastrarCandidato() {
-        new CandidatoView().formularioCadastrarCandidato()
+        candidatoView.formularioCadastrarCandidato()
     }
 
     void exibirFormularioListarCandidatos() {
-        new CandidatoView().listarCandidatos()
+        candidatoView.listarCandidatos()
     }
 
     void exibirFormularioAtualizarCandidato() {
-        new CandidatoView().formularioAtualizarCandidato()
+        candidatoView.formularioAtualizarCandidato()
     }
 
     void exibirFormularioDeletarCandidato() {
-        new CandidatoView().deletarCandidato()
+        candidatoView.deletarCandidato()
     }
 
-    void setCandidatoDAO(candidato) {
-        new CandidatoDAO().dbCreate(candidato)
+    void setCandidatoDAO(Candidato candidato) {
+        candidatoDAO.dbCreate(candidato)
     }
 
     List<Candidato> getCandidatosDAO() {
-        return new CandidatoDAO().dbRead()
+        return candidatoDAO.dbRead()
     }
 
-    void atualizarCandidatoDAO(cpf, candidato) {
-        new CandidatoDAO().dbUpdate(cpf, candidato)
+    void atualizarCandidatoDAO(String cpf, Candidato candidato) {
+        candidatoDAO.dbUpdate(cpf, candidato)
     }
 
-    boolean deletarCandidatoDAO(cpf) {
-       return new CandidatoDAO().dbDelete(cpf)
+    boolean deletarCandidatoDAO(String cpf) {
+        return candidatoDAO.dbDelete(cpf)
     }
 }

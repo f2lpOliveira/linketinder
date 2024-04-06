@@ -34,7 +34,7 @@ class CandidatoView {
         String descricao = tools.entradaDados()
 
         print "Digite as competências do candidato (separadas por vírgula): "
-        List<String> competencias = tools.entradaDados().split(',').collect { it.trim() }
+        List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
 
         Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
 
@@ -102,7 +102,7 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
 
         candidatoController.atualizarCandidatoDAO(cpf, candidato)
 
-        println("Cadastro atualizado com sucesso!")
+        println("\nCadastro atualizado com sucesso!")
     }
 
     void deletarCandidato(){
@@ -115,7 +115,7 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
         if (candidatoDeletado){
             println("Cadastro removido com sucesso!")
         } else {
-            println("Nenhum candidato encontrado com o CPF fornecido.")
+            println("\nNenhum candidato encontrado com o CPF fornecido.")
         }
     }
 }
