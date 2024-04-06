@@ -1,20 +1,21 @@
 package br.com.linketinder.view
 
 import br.com.linketinder.controller.MenuController
+import br.com.linketinder.tools.Tools
 
 class MenuInicial {
 
     MenuController menuController = new MenuController()
+    Tools tools = new Tools()
 
     void iniciar() {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
         Boolean condicao = true
 
         while (condicao){
 
-            exibirOpcoes()
-            String opcao = br.readLine()
+            exibirOpcoesIniciais()
+            String opcao = tools.entradaDados()
 
             switch (opcao) {
                 case '1':
@@ -34,11 +35,12 @@ class MenuInicial {
         }
     }
 
-    void exibirOpcoes(){
-        println("Escolha uma das opções a seguir:")
-        println("1. Para Candidatos")
-        println("2. Para Empresas")
-        println("0. Sair")
+    void exibirOpcoesIniciais(){
+        print """Escolha uma das opções a seguir:
+1. Para Candidatos
+2. Para Empresas
+0. Sair
+"""
     }
 }
 

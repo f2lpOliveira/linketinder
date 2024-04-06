@@ -6,20 +6,20 @@ import br.com.linketinder.view.CandidatoView
 
 class CandidatoController {
 
-    void exibirMenuCadastrarCandidato() {
-        new CandidatoView().menuCadastrarCandidato()
+    void exibirFormularioCadastrarCandidato() {
+        new CandidatoView().formularioCadastrarCandidato()
     }
 
-    void exibirMenuListarCandidatos() {
-        new CandidatoView().menuListarCandidatos()
+    void exibirFormularioListarCandidatos() {
+        new CandidatoView().listarCandidatos()
     }
 
-    void exibirMenuAtualizarCandidato() {
-        new CandidatoView().menuAtualizarCandidato()
+    void exibirFormularioAtualizarCandidato() {
+        new CandidatoView().formularioAtualizarCandidato()
     }
 
-    void exibirMenuExcluirCandidato() {
-        new CandidatoView().menuDeletarCandidato()
+    void exibirFormularioDeletarCandidato() {
+        new CandidatoView().deletarCandidato()
     }
 
     void setCandidatoDAO(candidato) {
@@ -27,7 +27,7 @@ class CandidatoController {
     }
 
     List<Candidato> getCandidatosDAO() {
-        return new CandidatoDAO().dbRead();
+        return new CandidatoDAO().dbRead()
     }
 
     void atualizarCandidatoDAO(cpf, candidato) {

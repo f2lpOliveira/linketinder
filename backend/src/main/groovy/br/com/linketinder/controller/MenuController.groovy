@@ -1,17 +1,17 @@
 package br.com.linketinder.controller
 
-import br.com.linketinder.view.CandidatoView
 import br.com.linketinder.view.EmpresaView
 import br.com.linketinder.view.MenuInicial
+import br.com.linketinder.view.MenuCandidato
 
 class MenuController {
 
-    void iniciarIteracaoPrincipal(){
+    void exibirMenuInicial(){
         new MenuInicial().iniciar()
     }
 
     void iniciarIteracaoCandidato(){
-        new CandidatoView().menuOpcoesCandidato()
+        new MenuCandidato().opcoesCandidato()
     }
 
     void iniciarIteracaoEmpresa(){

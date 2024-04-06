@@ -6,48 +6,10 @@ import br.com.linketinder.tools.Tools
 
 class CandidatoView {
 
-    CandidatoController candidatoController
-    Tools tools
+    CandidatoController candidatoController = new CandidatoController()
+    Tools tools = new Tools()
 
-    CandidatoView() {
-        this.candidatoController = new CandidatoController()
-        this.tools = new Tools()
-    }
-
-    void menuOpcoesCandidato(){
-
-        Boolean condicao = true
-
-        while (condicao) {
-
-            exibirOpcoesCandidato()
-            String opcao = tools.entradaDados()
-
-            switch (opcao) {
-                case '1':
-                    candidatoController.exibirMenuCadastrarCandidato()
-                    break
-                case '2':
-                    candidatoController.exibirMenuListarCandidatos()
-                    break
-                case '3':
-                    candidatoController.exibirMenuAtualizarCandidato()
-                    break
-                case '4':
-                    candidatoController.exibirMenuExcluirCandidato()
-                    break
-                case '0':
-                    println ("")
-                    condicao = false
-                    break
-                default:
-                    println("Opção Inválida. Tente novamente!")
-                    break
-            }
-        }
-    }
-
-    void menuCadastrarCandidato() {
+    void formularioCadastrarCandidato() {
 
         print "\nDigite o nome do candidato: "
         String nome = tools.entradaDados()
@@ -81,11 +43,11 @@ class CandidatoView {
         println("Cadastro efetuado com sucesso!")
     }
 
-    void menuListarCandidatos() {
+    void listarCandidatos() {
         List<Candidato> candidatos = candidatoController.getCandidatosDAO()
 
         if (candidatos.isEmpty()) {
-            println "Não há candidatos cadastrados."
+            println "\nNão há candidatos cadastrados."
         } else {
             print "\nCandidatos cadastrados:"
             candidatos.each { candidato ->
@@ -109,7 +71,7 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
         }
     }
 
-    void menuAtualizarCandidato(){
+    void formularioAtualizarCandidato(){
 
         print "\nDigite seu CPF para atualizar seu cadastro: "
         String cpf = tools.entradaDados()
@@ -143,7 +105,7 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
         println("Cadastro atualizado com sucesso!")
     }
 
-    void menuDeletarCandidato(){
+    void deletarCandidato(){
 
         print "\nDigite seu CPF para excluir seu cadastro: "
         String cpf = tools.entradaDados()
@@ -155,16 +117,5 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
         } else {
             println("Nenhum candidato encontrado com o CPF fornecido.")
         }
-    }
-
-    void exibirOpcoesCandidato(){
-        print """
-Escolha uma das opções a seguir:
-1. Cadastrar
-2. Listar Vagas
-3. Atualizar Cadastro
-4. Excluir Cadastro
-0. Voltar ao Menu Anterior
-"""
     }
 }

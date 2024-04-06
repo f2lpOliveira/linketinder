@@ -32,7 +32,7 @@ class EmpresaView {
                     empresaController.cadastrarEmpresa()
                     break
                 case '2':
-                    candidatoController.exibirMenuListarCandidatos()
+                    candidatoController.exibirFormularioListarCandidatos()
                     break
                 case '3':
                     empresaController.atualizarEmpresa()
