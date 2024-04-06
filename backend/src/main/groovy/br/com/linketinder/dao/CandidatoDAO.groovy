@@ -75,15 +75,21 @@ class CandidatoDAO {
         }
     }
 
-    void dbDelete(String cpf) {
+    boolean dbDelete(String cpf) {
         try {
-            def empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
+            def result = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf])
+            if (result != null) {
+                Integer empid = result.empid
 
-            sql.execute("DELETE FROM candidato_competencias WHERE candidato_id = ?", [empid])
-
-            sql.execute("DELETE FROM candidatos WHERE cpf = ?", [cpf])
+                sql.execute("DELETE FROM candidato_competencias WHERE candidato_id = ?", [empid])
+                sql.execute("DELETE FROM candidatos WHERE cpf = ?", [cpf])
+                return true
+            } else {
+                return false
+            }
         } catch (Exception e) {
             e.printStackTrace()
+            return false
         }
     }
 }

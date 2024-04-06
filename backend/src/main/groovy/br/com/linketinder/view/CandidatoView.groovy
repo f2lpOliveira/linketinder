@@ -1,16 +1,13 @@
 package br.com.linketinder.view
 
 import br.com.linketinder.controller.CandidatoController
-import br.com.linketinder.dao.CandidatoDAO
 import br.com.linketinder.model.entity.Candidato
 
 class CandidatoView {
 
     CandidatoController candidatoController
-    CandidatoDAO candidatoDAO
 
     CandidatoView() {
-        this.candidatoDAO = new CandidatoDAO()
         this.candidatoController = new CandidatoController()
     }
 
@@ -26,16 +23,16 @@ class CandidatoView {
 
             switch (opcao) {
                 case '1':
-                    candidatoController.cadastrarCandidato()
+                    candidatoController.exibirMenuCadastrarCandidato()
                     break
                 case '2':
-                    candidatoController.listarCandidatos()
+                    candidatoController.exibirMenuListarCandidatos()
                     break
                 case '3':
-                    candidatoController.atualizarCandidato()
+                    candidatoController.exibirMenuAtualizarCandidato()
                     break
                 case '4':
-                    candidatoController.excluirCandidato()
+                    candidatoController.exibirMenuExcluirCandidato()
                     break
                 case '0':
                     println ("")
@@ -77,13 +74,14 @@ class CandidatoView {
         List<String> competencias = scanner.nextLine().split(',').collect { it.trim() }
 
         Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
-        candidatoDAO.dbCreate(candidato)
+
+        candidatoController.setCandidatoDAO(candidato)
 
         println("Cadastro efetuado com sucesso!")
     }
 
     void menuListarCandidatos() {
-        List<Candidato> candidatos = candidatoDAO.dbRead()
+        List<Candidato> candidatos = candidatoController.getCandidatosDAO()
 
         if (candidatos.isEmpty()) {
             println "Não há candidatos cadastrados."
@@ -139,7 +137,8 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
         List<String> competencias = Arrays.asList(scanner.nextLine().split(',')).collect { it.trim() }
 
         Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
-        candidatoDAO.dbUpdate(cpf, candidato)
+
+        candidatoController.atualizarCandidatoDAO(cpf, candidato)
 
         println("Cadastro atualizado com sucesso!")
     }
@@ -147,12 +146,16 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
     void menuDeletarCandidato(){
         Scanner scanner = new Scanner(System.in)
 
-        print "Digite seu CPF para excluir seu cadastro: "
+        print "\nDigite seu CPF para excluir seu cadastro: "
         String cpf = scanner.nextLine()
 
-        candidatoDAO.dbDelete(cpf)
+        boolean candidatoDeletado = candidatoController.deletarCandidatoDAO(cpf)
 
-        println("Cadastro removido com sucesso!")
+        if (candidatoDeletado){
+            println("Cadastro removido com sucesso!")
+        } else {
+            println("Nenhum candidato encontrado com o CPF fornecido.")
+        }
     }
 
     void exibirOpcoesCandidato(){
