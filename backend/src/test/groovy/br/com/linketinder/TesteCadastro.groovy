@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TesteCadastro {
 
-    static Cadastro cadastro
+
 
     @BeforeAll
     static void instanciaTesteCadastro() {
-        cadastro = new Cadastro()
+
     }
 
     @Test
