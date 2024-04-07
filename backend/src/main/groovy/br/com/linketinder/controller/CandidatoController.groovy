@@ -13,7 +13,7 @@ class CandidatoController {
         candidatoView.formularioCadastrarCandidato()
     }
 
-    void exibirFormularioListarCandidatos() {
+    void listarCandidatos() {
         candidatoView.listarCandidatos()
     }
 

@@ -36,11 +36,17 @@ class EmpresaDAO {
         }
     }
 
-    void dbDelete(String cnpj) {
+    boolean dbDelete(String cnpj) {
         try {
-            sql.execute("DELETE FROM empresas WHERE cnpj = ?", [cnpj])
+            boolean resultado = sql.execute("DELETE FROM empresas WHERE cnpj = ?", [cnpj])
+            if (resultado != null) {
+                return true
+            } else {
+                return false
+            }
         } catch (Exception e) {
             e.printStackTrace()
+            return false
         }
     }
 }

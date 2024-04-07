@@ -1,6 +1,6 @@
 package br.com.linketinder
 
-import br.com.linketinder.model.Cadastro
+
 import br.com.linketinder.model.entity.Candidato
 import br.com.linketinder.model.entity.Empresa
 

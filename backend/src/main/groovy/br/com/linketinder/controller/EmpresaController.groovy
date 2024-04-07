@@ -1,22 +1,43 @@
 package br.com.linketinder.controller
 
+import br.com.linketinder.dao.EmpresaDAO
+import br.com.linketinder.model.entity.Empresa
 import br.com.linketinder.view.EmpresaView
 
 class EmpresaController {
 
-    void cadastrarEmpresa() {
-        new EmpresaView().menuCadastrarEmpresa()
+    static EmpresaView empresaView = new EmpresaView()
+    EmpresaDAO empresaDAO = new EmpresaDAO()
+
+    void exibirFormularioCadastrarEmpresa() {
+        empresaView.formularioCadastrarEmpresa()
     }
 
     void listarEmpresas() {
-        new EmpresaView().menuListarEmpresas()
+        empresaView.listarEmpresas()
     }
 
-    void atualizarEmpresa() {
-        new EmpresaView().menuAtualizarEmpresa()
+    void exibirFormularioAtualizarEmpresa() {
+        empresaView.formularioAtualizarEmpresa()
     }
 
-    void excluirEmpresa() {
-        new EmpresaView().menuDeletarEmpresa()
+    void exibirFormularioDeletarEmpresa() {
+        empresaView.deletarEmpresa()
+    }
+
+    void setEmpresaDAO(Empresa empresa) {
+        empresaDAO.dbCreate(empresa)
+    }
+
+    List<Empresa> getEmpresasDAO() {
+        return empresaDAO.dbRead()
+    }
+
+    void atualizarEmpresaDAO(String cnpj, Empresa empresa) {
+        empresaDAO.dbUpdate(cnpj, empresa)
+    }
+
+    boolean deletarEmpresaDAO(String cnpj) {
+        return empresaDAO.dbDelete(cnpj)
     }
 }
