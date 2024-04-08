@@ -1,12 +1,14 @@
 package br.com.linketinder.view
 
 import br.com.linketinder.controller.EmpresaController
+import br.com.linketinder.controller.VagaController
 import br.com.linketinder.model.entity.Empresa
 import br.com.linketinder.tools.Tools
 
 class EmpresaView {
 
     EmpresaController empresaController = new EmpresaController()
+    VagaController vagaController = new VagaController()
     Tools tools = new Tools()
 
     void formularioCadastrarEmpresa() {
@@ -33,6 +35,8 @@ class EmpresaView {
         String descricao = tools.entradaDados()
 
         Empresa empresa = new Empresa(nome, email, cnpj, pais, estado, cep, descricao)
+
+        vagaController.exibirFormularioCadastrarVagaEmpresa()
 
         empresaController.setEmpresaDAO(empresa)
 

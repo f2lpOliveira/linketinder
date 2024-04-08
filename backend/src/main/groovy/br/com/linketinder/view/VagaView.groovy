@@ -32,4 +32,32 @@ class VagaView {
 
         println("Cadastro efetuado com sucesso!")
     }
+
+    void opcaoCadastroEmpresaVaga() {
+        print """
+Deseja cadastrar uma vaga para essa empresa? (s/n):
+"""
+        String opcao = tools.entradaDados()
+
+        if(opcao.equalsIgnoreCase("s")){
+            print "\nDigite o nome da vaga: "
+            String nome = tools.entradaDados()
+
+            print "Digite o estado da vaga: "
+            String estado = tools.entradaDados()
+
+            print "Digite o cep da vaga: "
+            String cep = tools.entradaDados()
+
+            print "Digite a descricao da vaga: "
+            String descricao = tools.entradaDados()
+
+            print "Digite as competências da vaga (separadas por vírgula): "
+            List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
+
+            Vaga vaga = new Vaga(nome, estado, cep, descricao, competencias)
+
+            vagaController.setVagaDAO(vaga)
+        }
+    }
 }

@@ -9,20 +9,24 @@ class VagaController {
     static VagaView vagaView = new VagaView()
     VagaDAO vagaDAO = new VagaDAO()
 
-    void exibirFormularioCadastrarVaga(){
+    void exibirFormularioCadastrarVaga() {
         vagaView.formularioCadastrarVaga()
     }
 
-    void listarVagas(){
+    void listarVagas() {
         vagaView.listarVagas()
     }
 
-    void exibirFormularioAtualizarVaga(){
+    void exibirFormularioAtualizarVaga() {
         vagaView.formularioAtualizarVaga()
     }
 
-    void exibirFormularioDeletarVaga(){
+    void exibirFormularioDeletarVaga() {
         vagaView.deletarVaga()
+    }
+
+    void exibirFormularioCadastrarVagaEmpresa() {
+       vagaView.opcaoCadastroEmpresaVaga()
     }
 
     void setVagaDAO(Vaga vaga) {

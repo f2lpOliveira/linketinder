@@ -1,12 +1,14 @@
 package br.com.linketinder.view
 
 import br.com.linketinder.controller.CandidatoController
+import br.com.linketinder.controller.CompetenciasController
 import br.com.linketinder.model.entity.Candidato
 import br.com.linketinder.tools.Tools
 
 class CandidatoView {
 
     CandidatoController candidatoController = new CandidatoController()
+    CompetenciasController competenciasController = new CompetenciasController()
     Tools tools = new Tools()
 
     void formularioCadastrarCandidato() {
@@ -39,6 +41,8 @@ class CandidatoView {
         Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
 
         candidatoController.setCandidatoDAO(candidato)
+        competenciasController.setCompetenciasCandidato(candidato)
+        competenciasController.setAssociacaoCompetenciaCandidato(candidato)
 
         println("Cadastro efetuado com sucesso!")
     }

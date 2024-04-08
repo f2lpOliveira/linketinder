@@ -12,17 +12,6 @@ class CandidatoDAO {
         try {
             sql.execute("INSERT INTO candidatos (nome, email, cpf, idade, estado, cep, descricao) VALUES (?, ?, ?, ?, ?, ?, ?)",
                     [candidato.nome, candidato.email, candidato.cpf, candidato.idade, candidato.estado, candidato.cep, candidato.descricao])
-
-            candidato.competencias.each { competencia ->
-                sql.execute("INSERT INTO competencias (nome) VALUES (?)", [competencia])
-            }
-
-            Integer empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
-
-            candidato.competencias.each { competencia ->
-                sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, (SELECT competencia_id FROM competencias WHERE nome = ? ORDER BY competencia_id LIMIT 1))",
-                        [empid, competencia])
-            }
         } catch (Exception e) {
             e.printStackTrace()
         }
