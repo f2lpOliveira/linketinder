@@ -14,13 +14,4 @@ class CompetenciasController {
     void setAssociacaoCompetenciaCandidato (Candidato candidato) {
         competenciasDAO.associarCompetenciasAoCandidato(candidato)
     }
-
-    void candidatoTemCompetencias(Candidato candidato) {
-        if (!candidato.competencias.empty) {
-            print """
-Competências: ${candidato.competencias.collect { it }.join(', ')}"""
-        } else {
-            println "Nenhuma competência cadastrada para este candidato."
-        }
-    }
 }

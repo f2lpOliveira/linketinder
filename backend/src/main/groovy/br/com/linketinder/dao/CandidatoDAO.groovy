@@ -47,21 +47,30 @@ class CandidatoDAO {
                     candidato.descricao,
                     cpf
             ])
-
-            Integer empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
-
-            sql.execute("DELETE FROM candidato_competencias WHERE candidato_id = ?", [empid])
-
-            candidato.competencias.each { competencia ->
-                Integer competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia])?.competencia_id
-                if (competenciaId == null) {
-                    sql.execute("INSERT INTO competencias (nome) VALUES (?)", [competencia])
-                    competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia]).competencia_id
-                }
-                sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, ?)", [empid, competenciaId])
-            }
-        } catch (Exception e) {
+            Integer empid = obterIdCandidato(cpf)
+            removerCompetenciasAntigas(empid)
+            atualizarCompetencias(empid, candidato.competencias)
+        }catch (Exception e) {
             e.printStackTrace()
+        }
+    }
+
+    Integer obterIdCandidato(String cpf) {
+        return sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
+    }
+
+    void removerCompetenciasAntigas(Integer empid) {
+        sql.execute("DELETE FROM candidato_competencias WHERE candidato_id = ?", [empid])
+    }
+
+    void atualizarCompetencias(Integer empid, List<String> competencias) {
+        competencias.each { competencia ->
+            Integer competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia])?.competencia_id
+            if (competenciaId == null) {
+                sql.execute("INSERT INTO competencias (nome) VALUES (?)", [competencia])
+                competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia]).competencia_id
+            }
+            sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, ?)", [empid, competenciaId])
         }
     }
 
