@@ -21,16 +21,19 @@ class CandidatoDAO {
 
     List<Candidato> dbRead() {
         try {
-            List<Candidato> candidatos = sql.rows("SELECT * FROM candidatos");
+            List<Candidato> candidatos = sql.rows("SELECT * FROM candidatos")
 
-            candidatos.each {candidato ->
-                Integer empid = competenciasController.getCompetenciasCandidato(candidato.cpf)
-                candidato.competencias = competenciasController.listarCompetenciasCandidato(empid)
+            candidatos.each { candidato ->
+
+                Integer empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
+
+                candidato.competencias = sql.rows("SELECT nome FROM competencias " +
+                        "INNER JOIN candidato_competencias ON competencias.competencia_id = candidato_competencias.competencia_id " +
+                        "WHERE candidato_competencias.candidato_id = ?", [empid]).collect { it.nome }
             }
-            return candidatos;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            return candidatos
+        }catch (Exception e){
+            e.printStackTrace()
         }
     }
 
