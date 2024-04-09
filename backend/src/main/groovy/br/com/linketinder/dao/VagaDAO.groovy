@@ -15,6 +15,25 @@ class VagaDAO {
             e.printStackTrace()
         }
     }
+
+    List<Vaga> dbRead() {
+        try {
+            List<Vaga> vagas = sql.rows("SELECT * FROM vagas")
+
+            vagas.each { vaga ->
+
+                Integer vagaId = sql.firstRow("SELECT vaga_id FROM vagas WHERE nome = ? AND estado = ? AND cep = ? AND descricao = ?",
+                        [vaga.nome, vaga.estado, vaga.cep, vaga.descricao]).vaga_id
+
+                vaga.competencias = sql.rows("SELECT nome FROM competencias " +
+                        "INNER JOIN vagas_competencias ON competencias.competencia_id = vagas_competencias.competencia_id " +
+                        "WHERE vagas_competencias.vaga_id = ?", [vagaId]).collect { it.nome }
+            }
+            return vagas
+        }catch (Exception e){
+            e.printStackTrace()
+        }
+    }
 }
 
 

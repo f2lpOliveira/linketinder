@@ -2,6 +2,8 @@ package br.com.linketinder.view
 
 import br.com.linketinder.controller.CompetenciasController
 import br.com.linketinder.controller.VagaController
+import br.com.linketinder.dao.VagaDAO
+import br.com.linketinder.model.entity.Candidato
 import br.com.linketinder.model.entity.Vaga
 import br.com.linketinder.model.factory.UsuarioFactory
 import br.com.linketinder.tools.Tools
@@ -65,6 +67,31 @@ Deseja cadastrar uma vaga para essa empresa? (s/n):
             vagaController.setVagaDAO(vaga)
             competenciasController.setCompetenciasVaga(vaga)
             competenciasController.setAssociacaoCompetenciaVaga(vaga)
+        }
+    }
+
+    void listarVagas() {
+        List<Vaga> vagas = new VagaDAO().dbRead()
+
+        if (vagas.isEmpty()) {
+            println "\nNão há vagas cadastrados."
+        } else {
+            print "\nCandidatos cadastrados:"
+            vagas.each { vaga ->
+                print """
+Nome: ${vaga.nome}
+Estado: ${vaga.estado}
+CEP: ${vaga.cep}
+Descrição: ${vaga.descricao}"""
+
+                if (!vaga.competencias.empty) {
+                    print """
+Competências: ${vaga.competencias.collect { it }.join(', ')}"""
+                } else {
+                    println "Nenhuma competência cadastrada para este vaga."
+                }
+                println ""
+            }
         }
     }
 }
