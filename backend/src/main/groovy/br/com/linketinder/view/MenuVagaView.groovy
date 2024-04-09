@@ -1,36 +1,34 @@
 package br.com.linketinder.view
 
-import br.com.linketinder.controller.CandidatoController
-import br.com.linketinder.controller.EmpresaController
+import br.com.linketinder.controller.VagaController
 import br.com.linketinder.tools.Tools
 
-class MenuEmpresa {
+class MenuVagaView {
 
-    CandidatoController candidatoController = new CandidatoController()
-    EmpresaController empresaController = new EmpresaController()
+    VagaController vagaController = new VagaController()
     Tools tools = new Tools()
 
-    void opcoesEmpresa(){
+    void opcoesVaga(){
 
         Boolean condicao = true
 
         while (condicao) {
 
-            exibirOpcoesEmpresa()
+            exibirOpcoesVaga()
             String opcao = tools.entradaDados()
 
             switch (opcao) {
                 case '1':
-                    empresaController.exibirFormularioCadastrarEmpresa()
+                    vagaController.exibirFormularioCadastrarVaga()
                     break
                 case '2':
-                    candidatoController.listarCandidatos()
+                    empresaController.listarEmpresas()
                     break
                 case '3':
-                    empresaController.exibirFormularioAtualizarEmpresa()
+                    vagaController.exibirFormularioAtualizarVaga()
                     break
                 case '4':
-                    empresaController.exibirFormularioDeletarEmpresa()
+                    vagaController.exibirFormularioDeletarVaga()
                     break
                 case '0':
                     println ("")
@@ -41,16 +39,15 @@ class MenuEmpresa {
                     break
             }
         }
-
     }
 
-    void exibirOpcoesEmpresa(){
+    void exibirOpcoesVaga() {
         print """
 Escolha uma das opções a seguir:
-1. Cadastrar
-2. Listar Candidatos
-3. Atualizar Cadastro
-4. Excluir Cadastro
+1. Cadastrar Vaga
+2. Listar Vagas
+3. Atualizar Vaga
+4. Excluir Vaga
 0. Voltar ao Menu Anterior
 """
     }

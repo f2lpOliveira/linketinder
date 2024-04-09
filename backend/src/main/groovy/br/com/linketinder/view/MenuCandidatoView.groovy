@@ -1,34 +1,36 @@
 package br.com.linketinder.view
 
+import br.com.linketinder.controller.CandidatoController
 import br.com.linketinder.controller.VagaController
 import br.com.linketinder.tools.Tools
 
-class MenuVaga {
+class MenuCandidatoView {
 
+    CandidatoController candidatoController = new CandidatoController()
     VagaController vagaController = new VagaController()
     Tools tools = new Tools()
 
-    void opcoesVaga(){
+    void opcoesCandidato(){
 
         Boolean condicao = true
 
         while (condicao) {
 
-            exibirOpcoesVaga()
+            exibirOpcoesCandidato()
             String opcao = tools.entradaDados()
 
             switch (opcao) {
                 case '1':
-                    vagaController.exibirFormularioCadastrarVaga()
+                    candidatoController.exibirFormularioCadastrarCandidato()
                     break
                 case '2':
-                    empresaController.listarEmpresas()
+                    vagaController.listarVagas()
                     break
                 case '3':
-                    vagaController.exibirFormularioAtualizarVaga()
+                    candidatoController.exibirFormularioAtualizarCandidato()
                     break
                 case '4':
-                    vagaController.exibirFormularioDeletarVaga()
+                    candidatoController.exibirFormularioDeletarCandidato()
                     break
                 case '0':
                     println ("")
@@ -41,13 +43,13 @@ class MenuVaga {
         }
     }
 
-    void exibirOpcoesVaga() {
+    void exibirOpcoesCandidato(){
         print """
 Escolha uma das opções a seguir:
-1. Cadastrar Vaga
+1. Cadastro
 2. Listar Vagas
-3. Atualizar Vaga
-4. Excluir Vaga
+3. Atualizar Cadastro
+4. Excluir Cadastro
 0. Voltar ao Menu Anterior
 """
     }

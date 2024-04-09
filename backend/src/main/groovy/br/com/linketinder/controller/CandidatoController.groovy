@@ -2,11 +2,11 @@ package br.com.linketinder.controller
 
 import br.com.linketinder.dao.CandidatoDAO
 import br.com.linketinder.model.entity.Candidato
-import br.com.linketinder.view.CandidatoView
+import br.com.linketinder.view.InteracaoCandidatoView
 
 class CandidatoController {
 
-    static CandidatoView candidatoView = new CandidatoView()
+    static InteracaoCandidatoView candidatoView = new InteracaoCandidatoView()
     CandidatoDAO candidatoDAO = new CandidatoDAO()
 
     void exibirFormularioCadastrarCandidato() {

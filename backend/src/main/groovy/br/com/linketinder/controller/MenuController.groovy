@@ -1,16 +1,16 @@
 package br.com.linketinder.controller
 
-import br.com.linketinder.view.MenuEmpresa
-import br.com.linketinder.view.MenuInicial
-import br.com.linketinder.view.MenuCandidato
-import br.com.linketinder.view.MenuVaga
+import br.com.linketinder.view.MenuEmpresaView
+import br.com.linketinder.view.MenuInicialView
+import br.com.linketinder.view.MenuCandidatoView
+import br.com.linketinder.view.MenuVagaView
 
 class MenuController {
 
-    static MenuInicial menuInicial = new MenuInicial()
-    static MenuCandidato menuCandidato = new MenuCandidato()
-    static MenuEmpresa menuEmpresa = new MenuEmpresa()
-    static MenuVaga menuVaga = new MenuVaga()
+    static MenuInicialView menuInicial = new MenuInicialView()
+    static MenuCandidatoView menuCandidato = new MenuCandidatoView()
+    static MenuEmpresaView menuEmpresa = new MenuEmpresaView()
+    static MenuVagaView menuVaga = new MenuVagaView()
 
     void exibirMenuInicial(){
         menuInicial.iniciar()

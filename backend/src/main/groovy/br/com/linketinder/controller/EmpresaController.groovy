@@ -2,11 +2,11 @@ package br.com.linketinder.controller
 
 import br.com.linketinder.dao.EmpresaDAO
 import br.com.linketinder.model.entity.Empresa
-import br.com.linketinder.view.EmpresaView
+import br.com.linketinder.view.InteracaoEmpresaView
 
 class EmpresaController {
 
-    static EmpresaView empresaView = new EmpresaView()
+    static InteracaoEmpresaView empresaView = new InteracaoEmpresaView()
     EmpresaDAO empresaDAO = new EmpresaDAO()
 
     void exibirFormularioCadastrarEmpresa() {

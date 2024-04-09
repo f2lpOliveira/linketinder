@@ -2,10 +2,11 @@ package br.com.linketinder
 
 import br.com.linketinder.dao.CandidatoDAO
 import br.com.linketinder.model.entity.Candidato
+import br.com.linketinder.model.factory.UsuarioFactory
 import groovy.sql.Sql
 import spock.lang.Specification
 
-class CandidatoDao extends Specification {
+class CandidatoDAOTest extends Specification {
 
     Sql sql
     CandidatoDAO candidatoDAO
@@ -17,7 +18,7 @@ class CandidatoDao extends Specification {
 
     void dbCreateCandidatoDAOTest() {
         given:
-        Candidato candidato = new Candidato(
+        Candidato candidato = UsuarioFactory.criarCandidato(
                 "João Silva",
                 "joao@example.com",
                 "123.456.789-00",

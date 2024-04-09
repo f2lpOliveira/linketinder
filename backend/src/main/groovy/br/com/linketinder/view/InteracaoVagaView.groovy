@@ -1,12 +1,15 @@
 package br.com.linketinder.view
 
+import br.com.linketinder.controller.CompetenciasController
 import br.com.linketinder.controller.VagaController
 import br.com.linketinder.model.entity.Vaga
+import br.com.linketinder.model.factory.UsuarioFactory
 import br.com.linketinder.tools.Tools
 
-class VagaView {
+class InteracaoVagaView {
 
     VagaController vagaController = new VagaController()
+    CompetenciasController competenciasController = new CompetenciasController()
     Tools tools = new Tools()
 
     void formularioCadastrarVaga() {
@@ -26,9 +29,11 @@ class VagaView {
         print "Digite as competências da vaga (separadas por vírgula): "
         List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
 
-        Vaga vaga = new Vaga(nome, estado, cep, descricao, competencias)
+        Vaga vaga = UsuarioFactory.criarVaga(nome, estado, cep, descricao, competencias)
 
         vagaController.setVagaDAO(vaga)
+        competenciasController.setCompetenciasVaga(vaga)
+        competenciasController.setAssociacaoCompetenciaVaga(vaga)
 
         println("Cadastro efetuado com sucesso!")
     }
@@ -55,9 +60,11 @@ Deseja cadastrar uma vaga para essa empresa? (s/n):
             print "Digite as competências da vaga (separadas por vírgula): "
             List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
 
-            Vaga vaga = new Vaga(nome, estado, cep, descricao, competencias)
+            Vaga vaga = UsuarioFactory.criarVaga(nome, estado, cep, descricao, competencias)
 
             vagaController.setVagaDAO(vaga)
+            competenciasController.setCompetenciasVaga(vaga)
+            competenciasController.setAssociacaoCompetenciaVaga(vaga)
         }
     }
 }

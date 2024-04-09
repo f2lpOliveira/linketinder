@@ -5,7 +5,7 @@ import br.com.linketinder.controller.VagaController
 import br.com.linketinder.model.entity.Empresa
 import br.com.linketinder.tools.Tools
 
-class EmpresaView {
+class InteracaoEmpresaView {
 
     EmpresaController empresaController = new EmpresaController()
     VagaController vagaController = new VagaController()

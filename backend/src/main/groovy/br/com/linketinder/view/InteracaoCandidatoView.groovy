@@ -3,9 +3,10 @@ package br.com.linketinder.view
 import br.com.linketinder.controller.CandidatoController
 import br.com.linketinder.controller.CompetenciasController
 import br.com.linketinder.model.entity.Candidato
+import br.com.linketinder.model.factory.UsuarioFactory
 import br.com.linketinder.tools.Tools
 
-class CandidatoView {
+class InteracaoCandidatoView {
 
     CandidatoController candidatoController = new CandidatoController()
     CompetenciasController competenciasController = new CompetenciasController()
@@ -38,7 +39,7 @@ class CandidatoView {
         print "Digite as competências do candidato (separadas por vírgula): "
         List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
 
-        Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
+        Candidato candidato = UsuarioFactory.criarCandidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
 
         candidatoController.setCandidatoDAO(candidato)
         competenciasController.setCompetenciasCandidato(candidato)
@@ -102,7 +103,7 @@ Competências: ${candidato.competencias.collect { it }.join(', ')}"""
         print "Confirme suas competências (separadas por vírgula): "
         List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
 
-        Candidato candidato = new Candidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
+        Candidato candidato = UsuarioFactory.criarCandidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
 
         candidatoController.atualizarCandidatoDAO(cpf, candidato)
 

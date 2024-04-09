@@ -2,11 +2,11 @@ package br.com.linketinder.controller
 
 import br.com.linketinder.dao.VagaDAO
 import br.com.linketinder.model.entity.Vaga
-import br.com.linketinder.view.VagaView
+import br.com.linketinder.view.InteracaoVagaView
 
 class VagaController {
 
-    static VagaView vagaView = new VagaView()
+    static InteracaoVagaView vagaView = new InteracaoVagaView()
     VagaDAO vagaDAO = new VagaDAO()
 
     void exibirFormularioCadastrarVaga() {

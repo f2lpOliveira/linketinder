@@ -1,6 +1,7 @@
 package br.com.linketinder.dao
 
 import br.com.linketinder.model.entity.Candidato
+import br.com.linketinder.model.entity.Vaga
 import groovy.sql.Sql
 
 class CompetenciasDAO {
@@ -64,6 +65,30 @@ class CompetenciasDAO {
                 competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ?", [competencia]).competencia_id
             }
             sql.execute("INSERT INTO candidato_competencias (candidato_id, competencia_id) VALUES (?, ?)", [empid, competenciaId])
+        }
+    }
+
+    void inserirCompetenciasVaga(Vaga vaga) {
+        try {
+            vaga.competencias.each { competencia ->
+                sql.execute("INSERT INTO competencias (nome) VALUES (?)", [competencia])
+            }
+        }catch (Exception e){
+            e.printStackTrace()
+        }
+    }
+
+    void associarCompetenciasVaga(Vaga vaga) {
+        try {
+            Integer vagaId = sql.firstRow("SELECT vaga_id FROM vagas WHERE nome = ? AND estado = ? AND cep = ? AND descricao = ?",
+                    [vaga.nome, vaga.estado, vaga.cep, vaga.descricao]).vaga_id
+
+            vaga.competencias.each { competencia ->
+                sql.execute("INSERT INTO vagas_competencias (vaga_id, competencia_id) VALUES (?, (SELECT competencia_id FROM competencias WHERE nome = ? ORDER BY competencia_id LIMIT 1))",
+                        [vagaId, competencia])
+            }
+        }catch (Exception e){
+            e.printStackTrace()
         }
     }
 
