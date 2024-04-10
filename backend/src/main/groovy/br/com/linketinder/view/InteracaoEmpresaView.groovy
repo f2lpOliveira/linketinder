@@ -3,6 +3,7 @@ package br.com.linketinder.view
 import br.com.linketinder.controller.EmpresaController
 import br.com.linketinder.controller.VagaController
 import br.com.linketinder.model.entity.Empresa
+import br.com.linketinder.model.factory.UsuarioFactory
 import br.com.linketinder.tools.Tools
 
 class InteracaoEmpresaView {
@@ -34,35 +35,13 @@ class InteracaoEmpresaView {
         print "Digite a descrição da empresa: "
         String descricao = tools.entradaDados()
 
-        Empresa empresa = new Empresa(nome, email, cnpj, pais, estado, cep, descricao)
+        Empresa empresa = UsuarioFactory.criarEmpresa(nome, email, cnpj, pais, estado, cep, descricao)
 
         vagaController.exibirFormularioCadastrarVagaEmpresa()
 
-        empresaController.setEmpresaDAO(empresa)
+        empresaController.inserirEmpresaDAO(empresa)
 
         println("Cadastro efetuado com sucesso!")
-    }
-
-    void listarEmpresas() {
-        List<Empresa> empresas = empresaController.getEmpresasDAO()
-
-        if (empresas.isEmpty()) {
-            println "\nNão há empresas cadastradas."
-        } else {
-            print "\nEmpresas cadastradas:"
-            empresas.each { empresa ->
-                print """
-Empresa: ${empresa.nome}
-Email: ${empresa.email}
-CNPJ: ${empresa.cnpj}
-Pais: ${empresa.pais}
-Estado: ${empresa.estado}
-CEP: ${empresa.cep}
-Descrição da Empresa: ${empresa.descricao}
-"""
-
-            }
-        }
     }
 
     void formularioAtualizarEmpresa() {
@@ -88,7 +67,9 @@ Descrição da Empresa: ${empresa.descricao}
         print "Digite a nova descrição da empresa: "
         String descricao = tools.entradaDados()
 
-        Empresa empresa = new Empresa(nome, email, cnpj, pais, estado, cep, descricao)
+        Empresa empresa = UsuarioFactory.criarEmpresa(nome, email, cnpj, pais, estado, cep, descricao)
+
+        vagaController.exibirFormularioCadastrarVagaEmpresa()
 
         empresaController.atualizarEmpresaDAO(cnpj, empresa)
 

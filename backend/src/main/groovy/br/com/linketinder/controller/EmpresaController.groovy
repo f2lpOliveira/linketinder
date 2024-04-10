@@ -13,10 +13,6 @@ class EmpresaController {
         empresaView.formularioCadastrarEmpresa()
     }
 
-    void listarEmpresas() {
-        empresaView.listarEmpresas()
-    }
-
     void exibirFormularioAtualizarEmpresa() {
         empresaView.formularioAtualizarEmpresa()
     }
@@ -25,12 +21,8 @@ class EmpresaController {
         empresaView.deletarEmpresa()
     }
 
-    void setEmpresaDAO(Empresa empresa) {
+    void inserirEmpresaDAO(Empresa empresa) {
         empresaDAO.dbCreate(empresa)
-    }
-
-    List<Empresa> getEmpresasDAO() {
-        return empresaDAO.dbRead()
     }
 
     void atualizarEmpresaDAO(String cnpj, Empresa empresa) {

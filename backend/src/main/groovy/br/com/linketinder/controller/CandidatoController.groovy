@@ -6,30 +6,30 @@ import br.com.linketinder.view.InteracaoCandidatoView
 
 class CandidatoController {
 
-    static InteracaoCandidatoView candidatoView = new InteracaoCandidatoView()
+    static InteracaoCandidatoView interacaoCandidatoView = new InteracaoCandidatoView()
     CandidatoDAO candidatoDAO = new CandidatoDAO()
 
     void exibirFormularioCadastrarCandidato() {
-        candidatoView.formularioCadastrarCandidato()
+        interacaoCandidatoView.formularioCadastrarCandidato()
     }
 
     void listarCandidatos() {
-        candidatoView.listarCandidatos()
+        interacaoCandidatoView.listarCandidatos()
     }
 
     void exibirFormularioAtualizarCandidato() {
-        candidatoView.formularioAtualizarCandidato()
+        interacaoCandidatoView.formularioAtualizarCandidato()
     }
 
     void exibirFormularioDeletarCandidato() {
-        candidatoView.deletarCandidato()
+        interacaoCandidatoView.deletarCandidato()
     }
 
-    void setCandidatoDAO(Candidato candidato) {
+    void inserirCandidatoDAO(Candidato candidato) {
         candidatoDAO.dbCreate(candidato)
     }
 
-    List<Candidato> getCandidatosDAO() {
+    List<Candidato> listarCandidatosDAO() {
         return candidatoDAO.dbRead()
     }
 

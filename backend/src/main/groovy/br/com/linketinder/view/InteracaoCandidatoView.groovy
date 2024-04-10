@@ -41,15 +41,15 @@ class InteracaoCandidatoView {
 
         Candidato candidato = UsuarioFactory.criarCandidato(nome, email, cpf, idade, estado, cep, descricao, competencias)
 
-        candidatoController.setCandidatoDAO(candidato)
-        competenciasController.setCompetenciasCandidato(candidato)
-        competenciasController.setAssociacaoCompetenciaCandidato(candidato)
+        candidatoController.inserirCandidatoDAO(candidato)
+        competenciasController.inserirCompetenciasCandidato(candidato)
+        competenciasController.associarCompetenciaCandidato(candidato)
 
         println("Cadastro efetuado com sucesso!")
     }
 
     void listarCandidatos() {
-        List<Candidato> candidatos = candidatoController.getCandidatosDAO()
+        List<Candidato> candidatos = candidatoController.listarCandidatosDAO()
 
         if (candidatos.isEmpty()) {
             println "\nNão há candidatos cadastrados."

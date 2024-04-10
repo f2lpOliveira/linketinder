@@ -8,31 +8,23 @@ class CompetenciasController {
 
     CompetenciasDAO competenciasDAO = new CompetenciasDAO()
 
-    void getCompetenciasCandidato (String cpf) {
-        competenciasDAO.getCompetenciasCandidato(cpf)
-    }
-
-    void listarCompetenciasCandidato (Integer empid) {
-        competenciasDAO.listarCompetenciasCandidato(empid)
-    }
-
-    void removerCompetenciasCandidato (Integer empid) {
-        competenciasDAO.removerCompetencias(empid)
-    }
-
-    void atualizarCompetenciasCandidato (Integer empid, List<String> competencias) {
-        competenciasDAO.removerCompetencias(empid, competencias)
-    }
-
-    void setCompetenciasCandidato (Candidato candidato) {
+    void inserirCompetenciasCandidato(Candidato candidato) {
         competenciasDAO.inserirCompetenciasCandidato(candidato)
     }
 
-    void setAssociacaoCompetenciaCandidato (Candidato candidato) {
+    void associarCompetenciaCandidato(Candidato candidato) {
         competenciasDAO.associarCompetenciasAoCandidato(candidato)
     }
 
-    void setCompetenciasVaga (Vaga vaga) {
+    void atualizarCompetenciasCandidato (Integer empid, List<String> competencias) {
+        competenciasDAO.atualizarCompetencias(empid, competencias)
+    }
+
+    void removerCompetenciasCandidato (Integer empid) {
+        competenciasDAO.removerCompetenciasCandidato(empid)
+    }
+
+    void associarCompetenciasVaga(Vaga vaga) {
         competenciasDAO.inserirCompetenciasVaga(vaga)
     }
 

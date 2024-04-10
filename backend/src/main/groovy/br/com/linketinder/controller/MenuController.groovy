@@ -3,28 +3,22 @@ package br.com.linketinder.controller
 import br.com.linketinder.view.MenuEmpresaView
 import br.com.linketinder.view.MenuInicialView
 import br.com.linketinder.view.MenuCandidatoView
-import br.com.linketinder.view.MenuVagaView
 
 class MenuController {
 
-    static MenuInicialView menuInicial = new MenuInicialView()
-    static MenuCandidatoView menuCandidato = new MenuCandidatoView()
-    static MenuEmpresaView menuEmpresa = new MenuEmpresaView()
-    static MenuVagaView menuVaga = new MenuVagaView()
+    static MenuInicialView menuInicialView = new MenuInicialView()
+    static MenuCandidatoView menuCandidatoView = new MenuCandidatoView()
+    static MenuEmpresaView menuEmpresaView = new MenuEmpresaView()
 
     void exibirMenuInicial(){
-        menuInicial.iniciar()
+        menuInicialView.iniciar()
     }
 
     void iniciarIteracaoCandidato(){
-        menuCandidato.opcoesCandidato()
+        menuCandidatoView.opcoesCandidato()
     }
 
     void iniciarIteracaoEmpresa(){
-        menuEmpresa.opcoesEmpresa()
-    }
-
-    void iniciarIteracaoVaga(){
-        menuVaga.opcoesVaga()
+        menuEmpresaView.opcoesEmpresa()
     }
 }

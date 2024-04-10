@@ -3,7 +3,6 @@ package br.com.linketinder.view
 import br.com.linketinder.controller.CompetenciasController
 import br.com.linketinder.controller.VagaController
 import br.com.linketinder.dao.VagaDAO
-import br.com.linketinder.model.entity.Candidato
 import br.com.linketinder.model.entity.Vaga
 import br.com.linketinder.model.factory.UsuarioFactory
 import br.com.linketinder.tools.Tools
@@ -34,7 +33,7 @@ class InteracaoVagaView {
         Vaga vaga = UsuarioFactory.criarVaga(nome, estado, cep, descricao, competencias)
 
         vagaController.setVagaDAO(vaga)
-        competenciasController.setCompetenciasVaga(vaga)
+        competenciasController.associarCompetenciasVaga(vaga)
         competenciasController.setAssociacaoCompetenciaVaga(vaga)
 
         println("Cadastro efetuado com sucesso!")
@@ -65,8 +64,10 @@ Deseja cadastrar uma vaga para essa empresa? (s/n):
             Vaga vaga = UsuarioFactory.criarVaga(nome, estado, cep, descricao, competencias)
 
             vagaController.setVagaDAO(vaga)
-            competenciasController.setCompetenciasVaga(vaga)
+            competenciasController.associarCompetenciasVaga(vaga)
             competenciasController.setAssociacaoCompetenciaVaga(vaga)
+            new VagaDAO().obterIdVaga(vaga)
+            new VagaDAO().associarVagaEmpresa(vaga)
         }
     }
 

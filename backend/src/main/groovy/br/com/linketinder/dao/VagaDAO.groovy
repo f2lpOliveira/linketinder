@@ -32,16 +32,7 @@ class VagaDAO {
             return vagas
         }catch (Exception e){
             e.printStackTrace()
+            return null
         }
     }
 }
-
-
-
-//vaga.competencias.each { competencia ->
-//    sql.execute("INSERT INTO competencias (nome) VALUES (?)", [competencia])
-//
-//    Integer competenciaId = sql.firstRow("SELECT competencia_id FROM competencias WHERE nome = ? ORDER BY competencia_id LIMIT 1", [competencia]).competencia_id
-//
-//    sql.execute("INSERT INTO vagas_competencias (vaga_id, competencia_id) VALUES (?, ?)", [vagaId, competenciaId])
-//}

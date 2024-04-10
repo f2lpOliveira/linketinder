@@ -15,10 +15,6 @@ class EmpresaDAO {
         }
     }
 
-    List<Empresa> dbRead() {
-        return sql.rows("SELECT * FROM empresas")
-    }
-
     void dbUpdate(String cnpj, Empresa empresa) {
         try {
             sql.execute("UPDATE empresas SET nome = ?, email = ?, cnpj = ?, pais = ?, estado = ?, cep = ?, descricao = ? WHERE cnpj = ?", [
@@ -38,8 +34,9 @@ class EmpresaDAO {
 
     boolean dbDelete(String cnpj) {
         try {
-            boolean resultado = sql.execute("DELETE FROM empresas WHERE cnpj = ?", [cnpj])
-            if (resultado != null) {
+            Integer empid = obterIdEmpresa(cnpj)
+            if (empid != null) {
+                sql.execute("DELETE FROM empresas WHERE cnpj = ?", [cnpj])
                 return true
             } else {
                 return false
@@ -47,6 +44,15 @@ class EmpresaDAO {
         } catch (Exception e) {
             e.printStackTrace()
             return false
+        }
+    }
+
+    Integer obterIdEmpresa(String cnpj) {
+        try {
+            return sql.firstRow("SELECT empid FROM empresas WHERE cnpj = ?", [cnpj]).empid
+        } catch (Exception e) {
+            e.printStackTrace()
+            return 0
         }
     }
 }

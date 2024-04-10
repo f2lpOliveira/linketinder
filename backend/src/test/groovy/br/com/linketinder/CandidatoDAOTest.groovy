@@ -4,7 +4,9 @@ import br.com.linketinder.dao.CandidatoDAO
 import br.com.linketinder.model.entity.Candidato
 import br.com.linketinder.model.factory.UsuarioFactory
 import groovy.sql.Sql
+import org.junit.jupiter.api.Test
 import spock.lang.Specification
+import static org.junit.jupiter.api.Assertions.*
 
 class CandidatoDAOTest extends Specification {
 
@@ -16,6 +18,7 @@ class CandidatoDAOTest extends Specification {
         candidatoDAO = new CandidatoDAO(sql: sql)
     }
 
+    @Test
     void dbCreateCandidatoDAOTest() {
         given:
         Candidato candidato = UsuarioFactory.criarCandidato(
@@ -33,6 +36,13 @@ class CandidatoDAOTest extends Specification {
         candidatoDAO.dbCreate(candidato)
 
         then:
-        1 * sql.execute(_ as String, _ as List)
+        assertEquals("João Silva", candidato.nome)
+        assertEquals("joao@example.com", candidato.email)
+        assertEquals("123.456.789-00", candidato.cpf)
+        assertEquals(30, candidato.idade)
+        assertEquals("SP", candidato.estado)
+        assertEquals("01000-000", candidato.cep)
+        assertEquals("Descrição do candidato", candidato.descricao)
+        assertEquals(2, candidato.competencias.size())
     }
 }

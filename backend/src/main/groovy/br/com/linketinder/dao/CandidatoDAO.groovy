@@ -24,9 +24,7 @@ class CandidatoDAO {
             List<Candidato> candidatos = sql.rows("SELECT * FROM candidatos")
 
             candidatos.each { candidato ->
-
-                Integer empid = sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [candidato.cpf]).empid
-
+                Integer empid = obterIdCandidato(candidato.cpf)
                 candidato.competencias = sql.rows("SELECT nome FROM competencias " +
                         "INNER JOIN candidato_competencias ON competencias.competencia_id = candidato_competencias.competencia_id " +
                         "WHERE candidato_competencias.candidato_id = ?", [empid]).collect { it.nome }
@@ -34,6 +32,7 @@ class CandidatoDAO {
             return candidatos
         }catch (Exception e){
             e.printStackTrace()
+            return false
         }
     }
 
@@ -76,6 +75,11 @@ class CandidatoDAO {
     }
 
     Integer obterIdCandidato(String cpf) {
-        return sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
+        try {
+            return sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
+        } catch (Exception e) {
+            e.printStackTrace()
+            return 0
+        }
     }
 }
