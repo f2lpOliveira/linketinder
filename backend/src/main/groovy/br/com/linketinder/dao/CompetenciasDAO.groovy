@@ -31,26 +31,6 @@ class CompetenciasDAO {
         }
     }
 
-    List<String> listarCompetenciasCandidato(Integer empid) {
-        try {
-            return sql.rows("SELECT nome FROM competencias " +
-                    "INNER JOIN candidato_competencias ON competencias.competencia_id = candidato_competencias.competencia_id " +
-                    "WHERE candidato_competencias.candidato_id = ?", [empid]).collect { it.nome }
-        } catch (Exception e) {
-            e.printStackTrace()
-            return null
-        }
-    }
-
-    List<Candidato> getCompetenciasCandidato(String cpf) {
-        try {
-            return sql.firstRow("SELECT empid FROM candidatos WHERE cpf = ?", [cpf]).empid
-        } catch (Exception e) {
-            e.printStackTrace()
-            return null
-        }
-    }
-
     void removerCompetenciasCandidato(Integer empid) {
         sql.execute("DELETE FROM candidato_competencias WHERE candidato_id = ?", [empid])
     }

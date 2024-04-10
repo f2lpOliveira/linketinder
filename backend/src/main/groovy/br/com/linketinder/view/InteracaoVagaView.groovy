@@ -13,32 +13,6 @@ class InteracaoVagaView {
     CompetenciasController competenciasController = new CompetenciasController()
     Tools tools = new Tools()
 
-    void formularioCadastrarVaga() {
-
-        print "\nDigite o nome da vaga: "
-        String nome = tools.entradaDados()
-
-        print "Digite o estado da vaga: "
-        String estado = tools.entradaDados()
-
-        print "Digite o CEP da vaga: "
-        String cep = tools.entradaDados()
-
-        print "Digite a descrição da vaga: "
-        String descricao = tools.entradaDados()
-
-        print "Digite as competências da vaga (separadas por vírgula): "
-        List<String> competencias = Arrays.asList(tools.entradaDados().split(',')).collect { it.trim() }
-
-        Vaga vaga = UsuarioFactory.criarVaga(nome, estado, cep, descricao, competencias)
-
-        vagaController.setVagaDAO(vaga)
-        competenciasController.associarCompetenciasVaga(vaga)
-        competenciasController.setAssociacaoCompetenciaVaga(vaga)
-
-        println("Cadastro efetuado com sucesso!")
-    }
-
     void opcaoCadastroEmpresaVaga() {
         print """
 Deseja cadastrar uma vaga para essa empresa? (s/n):
@@ -66,8 +40,6 @@ Deseja cadastrar uma vaga para essa empresa? (s/n):
             vagaController.setVagaDAO(vaga)
             competenciasController.associarCompetenciasVaga(vaga)
             competenciasController.setAssociacaoCompetenciaVaga(vaga)
-            new VagaDAO().obterIdVaga(vaga)
-            new VagaDAO().associarVagaEmpresa(vaga)
         }
     }
 

@@ -17,31 +17,11 @@ class VagaController {
         vagaView.listarVagas()
     }
 
-    void exibirFormularioAtualizarVaga() {
-        vagaView.formularioAtualizarVaga()
-    }
-
-    void exibirFormularioDeletarVaga() {
-        vagaView.deletarVaga()
-    }
-
     void exibirFormularioCadastrarVagaEmpresa() {
        vagaView.opcaoCadastroEmpresaVaga()
     }
 
     void setVagaDAO(Vaga vaga) {
         vagaDAO.dbCreate(vaga)
-    }
-
-    List<Vaga> getVagasDAO() {
-        return vagaDAO.dbRead()
-    }
-
-    void atualizarVagaDAO() {
-        vagaDAO.dbUpdate()
-    }
-
-    boolean deletarVagaDAO() {
-        return vagaDAO.dbDelete()
     }
 }
