@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.codehaus.groovy:groovy-xml:3.0.21" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.codehaus.groovy" artifactId="groovy-xml" version="3.0.21" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-xml/3.0.21/92331459237ac22fd712b9b7342aa22df55bcb71/groovy-xml-3.0.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

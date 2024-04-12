@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.codehaus.groovy:groovy-console:3.0.21" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.codehaus.groovy" artifactId="groovy-console" version="3.0.21" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-console/3.0.21/5e5e9b78fa4d516d6674ba2e3256e345eae28308/groovy-console-3.0.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
