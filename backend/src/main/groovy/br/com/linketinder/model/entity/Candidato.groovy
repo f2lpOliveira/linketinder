@@ -10,4 +10,20 @@ class Candidato extends Usuario {
         this.cpf = cpf
         this.idade = idade
     }
+
+    String getCpf() {
+        return cpf
+    }
+
+    void setCpf(String cpf) {
+        this.cpf = cpf
+    }
+
+    int getIdade() {
+        return idade
+    }
+
+    void setIdade(int idade) {
+        this.idade = idade
+    }
 }

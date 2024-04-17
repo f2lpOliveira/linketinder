@@ -1,13 +1,53 @@
 package br.com.linketinder.controller
 
-import br.com.linketinder.dao.CandidatoDAO
 import br.com.linketinder.model.entity.Candidato
-import br.com.linketinder.view.InteracaoCandidatoView
+import br.com.linketinder.service.CandidatoService
+import br.com.linketinder.service.DataProcessorService
 
-class CandidatoController {
+import javax.servlet.ServletException
 
-    static InteracaoCandidatoView interacaoCandidatoView = new InteracaoCandidatoView()
-    CandidatoDAO candidatoDAO = new CandidatoDAO()
+import javax.servlet.annotation.WebServlet
+import javax.servlet.http.HttpServlet
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
+
+@WebServlet (urlPatterns = ["/candidato", "/candidato/cadastrar"])
+class CandidatoController extends HttpServlet {
+
+    CandidatoService candidatoService = new CandidatoService()
+    DataProcessorService dataProcessorFacade = new DataProcessorService()
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try {
+            response.setContentType("text/plain;charset=UTF-8")
+
+            StringBuilder json = dataProcessorFacade.readJsonRequest(request)
+
+            Candidato candidato = dataProcessorFacade.converterJsonToObject(json.toString(), Candidato.class)
+
+            candidatoService.inserirCandidatoDAO(candidato)
+
+        }catch (Exception e){
+            e.printStackTrace()
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     void exibirFormularioCadastrarCandidato() {
         interacaoCandidatoView.formularioCadastrarCandidato()
@@ -23,10 +63,6 @@ class CandidatoController {
 
     void exibirFormularioDeletarCandidato() {
         interacaoCandidatoView.deletarCandidato()
-    }
-
-    void inserirCandidatoDAO(Candidato candidato) {
-        candidatoDAO.dbCreate(candidato)
     }
 
     List<Candidato> listarCandidatosDAO() {
