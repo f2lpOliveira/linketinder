@@ -31,23 +31,4 @@ class VagaController extends HttpServlet {
             e.printStackTrace()
         }
     }
-
-
-
-
-
-
-    void exibirFormularioCadastrarVaga() {
-        vagaView.formularioCadastrarVaga()
-    }
-
-    void listarVagas() {
-        vagaView.listarVagas()
-    }
-
-    void exibirFormularioCadastrarVagaEmpresa() {
-       vagaView.opcaoCadastroEmpresaVaga()
-    }
-
-
 }

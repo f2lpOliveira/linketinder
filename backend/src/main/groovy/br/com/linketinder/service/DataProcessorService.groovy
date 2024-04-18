@@ -1,6 +1,5 @@
 package br.com.linketinder.service
 
-import br.com.linketinder.model.entity.Candidato
 import com.google.gson.Gson
 
 import javax.servlet.http.HttpServletRequest

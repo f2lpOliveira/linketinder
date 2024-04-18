@@ -3,7 +3,6 @@ package br.com.linketinder.controller
 import br.com.linketinder.model.entity.Empresa
 import br.com.linketinder.service.EmpresaService
 import br.com.linketinder.service.DataProcessorService
-import br.com.linketinder.view.InteracaoEmpresaView
 
 import javax.servlet.ServletException
 
@@ -32,49 +31,5 @@ class EmpresaController extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace()
         }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    static InteracaoEmpresaView empresaView = new InteracaoEmpresaView()
-
-    void exibirFormularioCadastrarEmpresa() {
-        empresaView.formularioCadastrarEmpresa()
-    }
-
-    void exibirFormularioAtualizarEmpresa() {
-        empresaView.formularioAtualizarEmpresa()
-    }
-
-    void exibirFormularioDeletarEmpresa() {
-        empresaView.deletarEmpresa()
-    }
-
-    void atualizarEmpresaDAO(String cnpj, Empresa empresa) {
-        empresaDAO.dbUpdate(cnpj, empresa)
-    }
-
-    boolean deletarEmpresaDAO(String cnpj) {
-        return empresaDAO.dbDelete(cnpj)
     }
 }

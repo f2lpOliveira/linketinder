@@ -1,8 +1,18 @@
 package br.com.linketinder.model.entity
 
-class Vaga extends Usuario{
+class Vaga {
+
+    String nome
+    String estado
+    String cep
+    String descricao
+    List<String> competencias
 
     Vaga(String nome, String estado, String cep, String descricao, List<String> competencias) {
-        super(nome, null, estado, cep, descricao, competencias)
+        this.nome = nome
+        this.estado = estado
+        this.cep = cep
+        this.descricao = descricao
+        this.competencias = competencias
     }
 }
