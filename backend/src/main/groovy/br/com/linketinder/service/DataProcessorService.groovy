@@ -22,7 +22,7 @@ class DataProcessorService {
         return json
     }
 
-    Candidato converterJsonToObject(String json, Class tipo) {
+    <T> T converterJsonToObject(String json, Class<T> tipo) {
         Gson gson = new Gson()
         return gson.fromJson(json, tipo)
     }
