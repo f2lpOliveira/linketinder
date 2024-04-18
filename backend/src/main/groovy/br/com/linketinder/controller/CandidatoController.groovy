@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@WebServlet (urlPatterns = ["/candidato", "/candidato/cadastrar"])
+@WebServlet(urlPatterns = ["/candidato", "/candidato/cadastrar"])
 class CandidatoController extends HttpServlet {
 
     CandidatoService candidatoService = new CandidatoService()
-    DataProcessorService dataProcessorFacade = new DataProcessorService()
+    DataProcessorService dataProcessorService = new DataProcessorService()
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             response.setContentType("text/plain;charset=UTF-8")
 
-            StringBuilder json = dataProcessorFacade.readJsonRequest(request)
+            StringBuilder json = dataProcessorService.readJsonRequest(request)
 
-            Candidato candidato = dataProcessorFacade.converterJsonToObject(json.toString(), Candidato.class)
+            Candidato candidato = dataProcessorService.converterJsonToObject(json.toString(), Candidato.class)
 
             candidatoService.inserirCandidatoDAO(candidato)
 
